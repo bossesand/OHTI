@@ -1,0 +1,30 @@
+
+
+npm install --global --production windows-build-tool
+npm install npm@latest -g
+
+npm install noble-uwp --no-optional
+npm install noble --no-optional
+npm install serialport --no-optional
+npm install bluetooth-hci-socket --no-optional
+npm install usb --no-optional
+
+
+npm install -g node-pre-gyp
+npm install -g node-gyp
+
+npm install --unsafe-perm usb
+
+
+node-gyp --python C:/Python27/
+npm config set python C:/Python27/
+
+C:\Program Files (x86)\nodejs>npm install node-gyp
+
+npm config set msvs_version 2015 --global
+
+SET PATH=C:\Program Files\Nodejs;%PATH%
+
+git clone --recursive https://github.com/nonolith/node-usb.git
+cd node-usb
+npm install

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="48px" height="48px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
+<g id="Big_Screen_Mini_stand">
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x1="10.459" y1="15.123" x2="12.422" y2="13.16"/>
+		
+			<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x1="12.422" y1="21.016" x2="18.315" y2="15.123"/>
+	</g>
+	<path fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="M44,31.965
+		c0,2.762-2.239,5-5,5H9c-2.761,0-5-2.238-5-5v-20c0-2.762,2.239-5,5-5h30c2.761,0,5,2.238,5,5V31.965z"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="15.111" y1="41.035" x2="32.889" y2="41.035"/>
+</g>
+</svg>
