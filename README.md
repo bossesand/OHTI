@@ -1,5 +1,36 @@
 <<<<<<< HEAD
-# Headtracking reciever
+# OHTI Headtracking device and a local webserver to allow listening to Ambisonic files upto Third order using either Omnitone or JSAmbisonics library.
+
+
+Currently this distribution has a restricting License but the License is planned to change to a less restricitve later.
+
+This software and firmware is the result of a long and slow journey with headtrackers starting 2014,
+This was as a result of wanting to listen to my own FOA Ambisonic (tetramic) recordings over headphones.
+
+A lot of people have been kind to answer questions and assist in other ways, for example with software modifications.
+A few of those I want to mention:
+
+ The Sursound mailing list
+ Stefan Schreiber
+ Hector Centeno
+ Matthias Kronlachner
+ Marc Lavallee
+ Politis Archontis
+ David Poirier-Quinot
+ Antti Vanne  IDA Audio - personal SOFA file and SOFA converion programs
+ Aaron Heller
+ Fons Adriaensen
+ Len Moskowitz
+
+ and others
+
+
+
+
+
+
+
+
 =======
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 

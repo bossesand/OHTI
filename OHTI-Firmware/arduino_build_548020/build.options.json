@@ -1,0 +1,10 @@
+{
+  "builtInLibrariesFolders": "C:\\Program Files (x86)\\Arduino\\libraries",
+  "customBuildProperties": "build.warn_data_percentage=75",
+  "fqbn": "Adafruit:Adafruit_nRF52_Arduino:feather52:debug=l0",
+  "hardwareFolders": "C:\\Program Files (x86)\\Arduino\\hardware,C:\\Users\\Bosse\\AppData\\Local\\Arduino15\\packages,C:\\Users\\Bosse\\Documents\\Arduino\\hardware",
+  "otherLibrariesFolders": "C:\\Users\\Bosse\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10803",
+  "sketchLocation": "C:\\Users\\Bosse\\Documents\\Arduino\\OHTI-Release-002a\\OHTI-Release-002a.ino",
+  "toolsFolders": "C:\\Program Files (x86)\\Arduino\\tools-builder,C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr,C:\\Users\\Bosse\\AppData\\Local\\Arduino15\\packages"
+}
