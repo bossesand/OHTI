@@ -1,0 +1,83 @@
+
+    //Quaternions
+     mySensor.readQuat();
+     Serial.print("Q0: "); Serial.print(mySensor.quat.q0); Serial.print("  Q1: "); Serial.print(mySensor.quat.q1); Serial.print("  Q2: "); Serial.print(mySensor.quat.q2); Serial.print("  Q3: "); Serial.println(mySensor.quat.q3);
+
+Q0: 0.22  Q1: 0.01  Q2: 0.84  Q3: -0.50
+Q0: 0.22  Q1: 0.00  Q2: 0.84  Q3: -0.49
+Q0: 0.22  Q1: 0.00  Q2: 0.84  Q3: -0.49
+
+------------------------------------------
+
+void loop(void)
+{
+/* Get a new sensor event */
+sensors_event_t event;
+bno.getEvent(&event);
+/* Display the floating point data */
+Serial.print("X: ");
+Serial.print(event.orientation.x, 4);
+Serial.print("\tY: ");
+Serial.print(event.orientation.y, 4);
+Serial.print("\tZ: ");
+Serial.print(event.orientation.z, 4);
+Serial.println("");
+delay(100);
+}
+X: 301.4375	Y: 81.8125	Z: -140.6875
+X: 293.8750	Y: 87.6875	Z: 2.1250
+X: 289.3125	Y: 83.7500	Z: 6.1875
+X: 285.5625	Y: 80.1875	Z: 94.8750
+X: 282.5000	Y: 75.1250	Z: 91.8750
+X: 280.3125	Y: 71.0000	Z: 100.6875
+X: 280.1875	Y: 67.3125	Z: 104.9375
+X: 280.6875	Y: 64.5625	Z: 103.8125
+X: 281.6250	Y: 61.9375	Z: 103.8750----------------------
+29/9
+This is the output of 
+    cmdMessenger.printLfCr(true); 
+     cmdMessenger.sendCmdStart(kQuarternionSend);
+     cmdMessenger.sendCmdArg(mySensor.quat.q0);
+     cmdMessenger.sendCmdArg(mySensor.quat.q1);
+     cmdMessenger.sendCmdArg(mySensor.quat.q2);
+     cmdMessenger.sendCmdArg(mySensor.quat.q3);
+     cmdMessenger.sendCmdEnd();
+
+2,0.72,0.35,-0.60,-0.07;
+2,0.72,0.33,-0.61,-0.09;
+2,0.71,0.32,-0.61,-0.11;
+2,0.71,0.31,-0.62,-0.12;
+2,0.71,0.30,-0.63,-0.13;
+2,0.71,0.28,-0.63,-0.15;
+2,0.70,0.26,-0.64,-0.16;
+2,0.70,0.25,-0.65,-0.18;
+2,0.70,0.23,-0.65,-0.19;
+2,0.69,0.22,-0.66,-0.21;
+
+I think maybe the 2 decimal resolution is good enough. That is the default protocol resolution
+As yuu can see below the data is in the variables :-)
+
+Q0: 0.041  Q1: 0.667  Q2: 0.286  Q3: 0.687
+2,0.04,0.67,0.29,0.69;
+Q0: 0.035  Q1: 0.663  Q2: 0.292  Q3: 0.688
+2,0.04,0.66,0.29,0.69;
+Q0: 0.042  Q1: 0.662  Q2: 0.291  Q3: 0.689
+2,0.04,0.66,0.29,0.69;
+Q0: 0.033  Q1: 0.663  Q2: 0.293  Q3: 0.688
+2,0.03,0.66,0.29,0.69;
+Q0: 0.039  Q1: 0.663  Q2: 0.293  Q3: 0.688
+2,0.04,0.66,0.29,0.69;
+
+I was testing to see what happens with the version for strings, I think we should run the binary version.
+I include the source code, abit unneccessary code left in it...
+´and very low speed so far and over usb.
+
+I am reading the sensor using i2c via the (https://github.com/kriswiner/BNO-055) libray.
+
+Higest spead that works over usb for me is 115200.
+next step is to use the binary version of the binary protocol and try to read it via python over usb.
+Then the last step is to do it via via BT.
+
+And then I have done proof of concept for HT and Protocol :-)
+
+Bo-Erik

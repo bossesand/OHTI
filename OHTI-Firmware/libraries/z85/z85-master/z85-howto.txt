@@ -1,0 +1,65 @@
+
+Detta finns i min kod, 
+// Z85  stuff test
+char helloData[8] = {0x86,0x4F,0xD2,0x6F,0xB5,0x59,0xF7,0x5B}; // Funkar HelloWorld! skrivs ut som binärkodat reultat..
+//char  helloData[8] =  {hej.quat[0-7]};  // syntax funkade
+
+// helloData[8] = hej.selva[4];  //warning: array subscript is above array bounds [-Warray-bounds]
+// helloData = hej.selva; //error: invalid array assignment
+
+// Encode binary to printable string
+   char encBuf[10+1] = {}; // +1 for null terminating char
+   //size_t bytesEncoded = Z85_encode(helloData, encBuf, 8);  //original
+   size_t bytesEncoded = Z85_encode(hej.selva, encBuf, 8);
+   
+// Decode printable string to binary
+   char decBuf[8] = {};
+   size_t bytesDecoded = Z85_decode(encBuf, decBuf, bytesEncoded);
+
+ //  bleuart.print("%s", encBuf);
+
+// bleuart.write(hej.selva );  //Debug
+
+   bleuart.write("3,");
+   bleuart.write( encBuf );
+   bleuart.write(";");
+   bleuart.write("!\n");
+  
+
+-------
+
+Detta är del av z85 / readme med exempel
+
+#include "stdio.h"
+#include "string.h"
+#include "z85/z85.h"
+
+int main()
+{
+   char helloData[8] = "\x86\x4F\xD2\x6F\xB5\x59\xF7\x5B";
+
+   // Encode binary to printable string
+   char encBuf[10+1] = {}; // +1 for null terminating char
+   size_t bytesEncoded = Z85_encode(helloData, encBuf, 8);
+
+   // Decode printable string to binary
+   char decBuf[8] = {};
+   size_t bytesDecoded = Z85_decode(encBuf, decBuf, bytesEncoded);
+
+   printf("%s", encBuf);
+
+   if (bytesEncoded == 10 &&
+       bytesDecoded == 8  &&
+       !memcmp(helloData, decBuf, 8))
+   {
+     printf("!\n");
+   }
+
+   return 0;
+}
+```
+
+Output
+```
+HelloWorld!
+```
