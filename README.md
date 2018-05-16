@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # OHTI Headtracking device HW and Firmware
 
 Host software to create a local webserver to allow listening to Ambisonic files up to Third order using either Omnitone or JSAmbisonics library in JavaScript capable browser like Chrome or Firefox.
