@@ -1,5 +1,5 @@
 
-# OHTI Headtracking device HW and Firmware + Player to playback streams or files of Ambisonic format recordings.
+# OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings.
 
 Host software to create a local webserver to allow Binaural Headphone listening to Ambisonic files up to Third order using either Omnitone or JSAmbisonics library in JavaScript capable browser like Chrome or Firefox.
 
@@ -44,17 +44,17 @@ The start was as a result of wanting to listen to my own FOA Ambisonic (tetramic
 A lot of people have been kind to answer questions and assist in other ways, for example with software modifications.
 A few of those I want to mention:
 
- The Sursound mailing list
- Stefan Schreiber
- Hector Centeno
- Matthias Kronlachner
- Marc Lavallee
- Politis Archontis
- David Poirier-Quinot
- Antti Vanne  IDA Audio - personal SOFA file and SOFA converion programs
- Aaron Heller
- Fons Adriaensen
- Len Moskowitz
+ The Sursound mailing list,
+ Stefan Schreiber,
+ Hector Centeno,
+ Matthias Kronlachner,
+ Marc Lavallee,
+ Politis Archontis,
+ David Poirier-Quinot,
+ Antti Vanne  IDA Audio - personal SOFA file and SOFA converion programs,
+ Aaron Heller,
+ Fons Adriaensen,
+ Len Moskowitz,
 
  and others.
 
