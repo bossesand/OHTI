@@ -1,0 +1,499 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    width: 100%;
+    height: 100%;
+
+    background: #11e8bb; /* Old browsers */
+    background: -moz-linear-gradient(top,  #11e8bb 0%, #8200c9 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #11e8bb 0%,#8200c9 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #11e8bb 0%,#8200c9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11e8bb', endColorstr='#8200c9',GradientType=0 ); /* IE6-9 */
+}
+
+body { 
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-weight: 900; 
+    line-height: 1.3;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+}
+
+.container, .header { 
+    margin: 0 1vw; 
+    padding: 0; 
+    width:80vw; 
+    max-width: 470px; 
+    transition: all 0.5s ease-out;
+    border-radius: 1vw;
+}
+.header { text-align: center}
+.footer_info { text-align:center;}
+.content { padding: 2vh 2vw; }
+.content #bigtext { text-align: center; }
+
+.logo-text { display: block; text-align: center; font-size: 7vmax }
+.info-sip-text { display: block; text-align: center; }
+.status-text { display: block; font-size: 3vmax }
+
+svg.logo-icon {
+	width: 20vw;
+	height: 20vw; 
+	max-width: 170px;
+	max-height: 170px;
+}
+@media (max-width: 520px) { 
+	.container, .header { margin: 0 auto; padding: 0; width:100vw; }
+	.content { padding: 0.5vh 0.2vw; }
+}
+
+canvas { width: 100%; height: 100% }
+
+.canvasFx {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-box {
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    right: 0;
+    /*width: 20vw;*/
+
+    top: 0;
+}
+.main-box-headspace {
+    width: 100vw;
+    height: 4vh;
+}
+.main-box-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* You can set flex-wrap and
+       flex-direction individually */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* Or do it all in one line
+      with flex flow */
+    flex-flow: row wrap;
+    /* tweak where items line
+       up on the row
+       valid values are: flex-start,
+       flex-end, space-between,
+       space-around, stretch */
+    align-content: flex-end;
+}
+.container-box { 
+    background: rgba(241, 241, 241, 0.8); 
+    padding: 1vh 1vw; 
+    width: 100%; 
+    position: absolute;
+}
+
+.ht-custom-btn--box {
+    margin: 1vw;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.ht-custom-info--box {
+    margin: 1vw;
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
+
+.ht-custom-info--euler, .ht-custom-info--euler-info {
+    width:100%; 
+    text-align: center;
+    /*height:60px; */
+    margin: 0;
+    padding: 0 10px;
+    font-size: 13px;
+    border: 0;
+    color: white;
+    /*line-height: 60px;*/
+    /*position: absolute;*/
+}
+
+
+.ht-custom-status--socket {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+    transition: all 200ms ease;
+    animation: socket-connected-status 1s ease infinite; 
+}
+.ht-custom-status--socket-disconnected {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+    transition: all 200ms ease;
+    animation: socket-disconnected-status 1s ease infinite; 
+}
+
+.ht-custom-btn {
+    transition: all 100ms linear;
+    border: 4px solid #fff;
+}
+
+.ht-custom-btn--ble {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-connection-bluetooth-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+}
+.ht-custom-btn--ble:hover {
+    background-size: 42px;
+}
+.ht-custom-btn--ble--on {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-connection-bluetooth-wh.svg') center center no-repeat #2546e9;
+    background-size: 40px;
+    border-radius: 50%;
+    border: 4px solid #1513a5;
+}
+
+.ht-custom-btn--usb {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-usb-ident-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+}
+.ht-custom-btn--usb--on {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-usb-ident-wh.svg') center center no-repeat #25e94f;
+    background-size: 40px;
+    border-radius: 50%;
+}
+
+.ht-custom-btn--reset {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-reset-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+}
+.ht-custom-btn--reset--on {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-reset-wh.svg') center center no-repeat #cb25e9;
+    background-size: 40px;
+    border-radius: 50%;
+}
+
+.ht-custom-btn--audio {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-player-fill-play-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+}
+.ht-custom-btn--audio--playing {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-player-fill-pause-wh.svg') center center no-repeat #cb25e9;
+    background-size: 40px;
+    border-radius: 50%;
+}
+
+.ht-custom-btn--reference {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-globe-calibration-wh.svg') center center no-repeat #4c4c4c;
+    background-size: 40px;
+    border-radius: 50%;
+}
+.ht-custom-btn--reference--on {
+    width: 60px;
+    height: 60px;
+    background: url('/icons/icon-48x48-globe-calibration-wh.svg') center center no-repeat #cb25e9;
+    background-size: 40px;
+    border-radius: 50%;
+}
+
+/* TOOLTIP */
+.tooltip--text {
+    visibility: hidden;
+    opacity: 0;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 0 0 6px 6px;
+    position: absolute;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 4vh;
+    line-height: 4vh;
+    transition: all 200ms ease;
+}
+
+.main-box--feedback {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    display: block;
+    height: 4vh;
+    line-height: 4vh;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.ht-custom-btn--tooltip:hover .tooltip--text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.pop-box--toggle {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -5;
+}
+
+form, .ht-form--button { 
+    padding: 1vh 1vw; 
+    width: 100%; 
+}
+label { 
+    margin: 10px 0; 
+    padding: 0; 
+    display: block; 
+    width: 100%; 
+    line-height: 2; 
+}
+input { margin: 0; 
+    padding: 10px; 
+    font-size: 13px; 
+    border: 0;
+    min-width: 50%;
+    border-radius: 0.3vh; box-shadow: 5px 5px 20px 0px #d6d6d6; }
+input:active, input:focus { 
+    background: #4CAF50; 
+    color:white;
+}
+button, .custom-file-upload-btn { 
+    margin: 0; 
+    padding: 10px; 
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-weight: 800; 
+    line-height: 1.3;
+    font-size: 11pt;
+    text-align: center;
+    background: #dedede;
+    border: 2px solid #6d6d6d !important;
+    color: black;
+    border: none;
+    border-radius: 40px;
+    box-shadow: 5px 5px 20px 0px #efefef;
+}
+
+button:active, .custom-file-upload-btn:active {
+    background: #6d6d6d;
+    color: white;
+    border-color: #333333 !important;
+}
+
+button:hover, .custom-file-upload-btn:hover {
+    cursor: pointer;
+}
+
+.custom-btn:hover {
+    cursor: pointer;
+}
+
+select { width: 100%; line-height: 35px; height: 35px; margin-bottom: 10px; border-radius: 10px;}
+
+.input-load-audio-file {
+    display:none;
+}
+
+
+ul { list-style-type: none; margin: 0; padding: 0; }
+ul li { padding: 1vh 2vw; word-wrap: break-word; }
+ul li:nth-child(odd) { background: #eee; }
+
+.deleteHistoryItem {
+	float: right;
+}
+
+
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+
+
+
+/* SVG */
+
+.status-codec-incall .status-connection {
+	animation: codec-sip-incall 1s ease infinite; 
+	fill:#CB2402;
+	stroke:#CB2402;
+}
+
+.status-codec-ready .status-connection {
+	animation: codec-sip-ready 1s ease infinite; 
+	fill:#000000;
+	stroke:#000000;
+}
+
+.status-codec-registered .status-codec {
+	animation: codec-sip-registered 1s ease infinite; 
+	fill:#4CAF50;
+	stroke:#4CAF50;
+}
+
+.status-codec-unregistered .status-codec {
+	animation: codec-sip-unregistered 1s ease infinite; 
+	fill:#4CAF50;
+	stroke:#4CAF50;
+}
+
+.status-socket-disconnected .status-codec, .status-socket-disconnected .status-connection {
+	animation: none;
+	fill:#999999 !important;
+	stroke:#999999 !important;
+}
+
+.status-socket-connected .status-socket  {
+	animation: socket-connected 1s ease infinite; 
+	transform-origin: bottom center;
+}
+
+.status-socket-disconnected .status-socket {
+	animation: socket-disconnected 1s ease infinite; 
+	transform-origin: bottom center;
+}
+
+.input-status-feedback {
+	padding: 5px;
+	text-align: center;
+}
+
+.status-socket-connected .status-socket:nth-child(2), .status-socket-disconnected .status-socket:nth-child(2) {
+	animation-delay: 0.3s;
+}
+
+@keyframes socket-connected-status {
+	0% {
+        background: #69d069;
+        background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #69d069;
+	}
+	100% {
+        background: #4c4c4c;
+        background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #4c4c4c;
+	}
+}
+@keyframes socket-disconnected-status {
+	0% {
+        background: #CB2402;
+        background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #CB2402;
+	}
+	100% {
+        background: #4c4c4c;
+        background: url('/icons/icon-48x48-circle-transport-wh.svg') center center no-repeat #4c4c4c;
+	}
+}
+
+@keyframes socket-connected {
+	0% {
+		transform: scale(1.0);
+		stroke: #69d069;
+	}
+	100% {
+		transform: scale(1.1);
+		stroke: #ffffff;
+	}
+}
+
+@keyframes socket-disconnected {
+	0% {
+		transform: scale(1.0);
+		stroke: #CB2402;
+	}
+	100% {
+		transform: scale(1.1);
+		stroke: #ffffff;
+	}
+}
+
+@keyframes codec-sip-registered {
+	0% {
+		stroke: #69d069;
+	}
+	100% {
+		stroke: rgba(255,255,255,0);
+	}
+}
+
+@keyframes codec-sip-unregistered {
+	0% {
+		stroke: #CB2402;
+	}
+	100% {
+		stroke: rgba(255,255,255,0);
+	}
+}
+
+@keyframes codec-sip-incall {
+	0% {
+		stroke: #CB2402;
+	}
+	100% {
+		stroke: rgba(255,255,255,0);
+	}
+}
+
+@keyframes codec-sip-ready {
+	0% {
+		stroke: #69d069;
+	}
+	100% {
+		stroke: rgba(255,255,255,0);
+	}
+}
+
+
+.net-info {
+    font-size: 200%;
+    display: block;
+    padding-top: 25px;
+	padding-bottom: 25px;
+	font-weight: 600;
+	float:left;
+	width:20%;
+	text-align:center;
+}
+
+.net-warning {
+	color: red;
+}
+
+

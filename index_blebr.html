@@ -28,11 +28,11 @@
             </div>
         </div>
 
-        <!--<div class="ht-custom-btn--box ht-custom-btn--tooltip">
+        <div class="ht-custom-btn--box ht-custom-btn--tooltip">
             <div class="ht-custom-btn ht-custom-btn--ble" id="btnToggleBLELocal">
 
             </div>
-        </div>-->
+        </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
             <div class="ht-custom-btn ht-custom-btn--usb" id="btnToggleUSB">
@@ -137,19 +137,35 @@
     </div>
 
 	<div class="container container-box pop-box--toggle" id="htcontrols">
+        <h3 class="ht-form--button">Headtracking settings and playout</h3>
 
-		<form action="" id="save-ht-ref">
+		<!--<form action="" id="save-ht-ref">-->
 			<!--<label for="inputHeadtrackRef">
-                Headtrack REF From Sensor: 
+                Headtrack REF From Sensor:
             </label>
             <input type="text" disabled="disabled" id="inputHeadtrackRef" autocomplete="off" />-->
+
+        <!--</form>-->
+
+        <div class="ht-form--button">
             <div class="input-status-feedback">
                 <span>Saved reference:</span> <span class="status-ht-reference" id="status-ht-reference"></span>
             </div>
-        </form>
+        </div>
+
         <div class="ht-form--button">
             <button id="inputSaveHeadtrackReference" class="custom-btn">Save reference</button> 
             <button id="inputResetHeadtrackReference" class="custom-btn">Reset reference</button>
+        </div>
+
+        <div class="ht-form--button">
+            <div class="input-status-feedback">
+                <span>Current ambisonic order:</span> <span class="status-ht-reference" id="status-ambisonic-order"></span>
+            </div>
+        </div>
+
+        <div class="ht-form--button">
+            <button id="btnToggleAmbisonicDecoderOrder" class="custom-btn">Toggle ambisonic order</button>
         </div>
 
         <div class="ht-form--button">
@@ -157,8 +173,25 @@
                 Select a file on your computer
             </label>
             <input id="inputCustomAudioFile" class="input-file-upload input-load-audio-file" type="file" accept="audio/*" />
-			<button id="eButtonPlayback" disabled>Play</button>
-		</div>
+            <div class="input-file-loaded-information">
+                <span id="txtLoadedAudioFile"></span>
+            </div>
+            <!-- todo set initial file name -->
+        </div>
+
+        <div class="ht-form--button">
+            <div class="input-status-feedback">
+                <span>Current time:</span> (<span id="status-audioplayer-current-time"></span> / <span id="status-audioplayer-total-time"></span>)
+            </div>
+        </div>
+
+        <div class="ht-form--button">
+            <button id="eButtonPlayback" disabled>Play</button>
+        </div>
+
+        <div class="ht-form--button">
+            <input id="inputCustomAudioLink" class="" type="text" />
+        </div>
 
 	</div>
 </div>
@@ -175,15 +208,16 @@
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
 	<script src="/omnitone/build/omnitone.min.js"></script>
-	<script src="/bigtext/dist/bigtext.js"></script>
+	<script src="/bigtext/dist/bigtext.js"></script> <!-- todo remove -->
 	<script>
 
-    /*addEvent(
+    addEvent(
         document.getElementById('btnToggleBLELocal'),
         'click',
         function () {
             navigator.bluetooth.requestDevice({
-            acceptAllDevices: true
+            acceptAllDevices: true,
+            //filters: [ {services: ['00001531-1212-efde-1523-785feabcd123', '6e400003b-5a3f-393e-0a9e-50e24dcca9e']} ]
         }) // ,optionalServices: ['battery_service']
         .then(device => {
             // Human-readable name of the device.
@@ -196,28 +230,38 @@
         })
         .then(server => {
             // Getting Battery Level Characteristic...
+            console.log('Getting Server...');
             console.dir(server);
-            console.dir(server.getPrimaryServices())
+            console.dir()
+            server.getPrimaryServices().then(function(data) {
+                console.log("Getprim,",data);
+            })
             //return service.getCharacteristic('battery_level');
         })
         .then(service => {
-            log('Getting Characteristic...');
-            return service.getCharacteristic(characteristicUuid);
+            console.log('Getting Characteristic...');
+            console.dir(service);
+            if(service !== undefined)
+            {
+                return service.getCharacteristic(characteristicUuid);
+            }
         })
         .then(characteristic => {
-            log('> Characteristic UUID:  ' + characteristic.uuid);
-            log('> Broadcast:            ' + characteristic.properties.broadcast);
-            log('> Read:                 ' + characteristic.properties.read);
-            log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
-            log('> Write:                ' + characteristic.properties.write);
-            log('> Notify:               ' + characteristic.properties.notify);
-            log('> Indicate:             ' + characteristic.properties.indicate);
-            log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
-            log('> Queued Write:         ' + characteristic.properties.reliableWrite);
-            log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
+            if(characteristic !== undefined) {
+                console.log('> Characteristic UUID:  ' + characteristic.uuid);
+                console.log('> Broadcast:            ' + characteristic.properties.broadcast);
+                console.log('> Read:                 ' + characteristic.properties.read);
+                console.log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
+                console.log('> Write:                ' + characteristic.properties.write);
+                console.log('> Notify:               ' + characteristic.properties.notify);
+                console.log('> Indicate:             ' + characteristic.properties.indicate);
+                console.log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
+                console.log('> Queued Write:         ' + characteristic.properties.reliableWrite);
+                console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
+            }
         })
         .catch(error => { console.log(error); });
-    });*/
+    });
 
 	// ==========================================
 	// 3D Graphics, THREE.js
@@ -382,6 +426,9 @@
     channelMap (Array): A custom channel map.
     */
 
+    // Create an AudioContext and an Omnitone decoder.
+	var audioContext = new AudioContext();
+
     var audioSources = {
         //'speech': 'sounds/4ch_B_FuMaNorm_FuMaOrd_speech.wav'
         'speech' : { 'path' : 'sounds/1dirct-12 sec.wav' },
@@ -389,56 +436,170 @@
     };
 
 	// Prepare audio element to feed the ambisonic source audio feed.
-	var audioElement = document.createElement('audio');
+    var audioElement = document.createElement('audio');
+    audioElementSource = audioContext.createMediaElementSource(audioElement);
 	audioElement.loop = true;
 	audioElement.crossOrigin = 'anonymous';
 	audioElement.src = audioSources['speech']['path'];
 
-	inputCustomAudioFile.onchange = function(){
-		var files = this.files;
-		var file = URL.createObjectURL(files[0]);
-		audioElement.src = file;
-		//audioElement.play();
-	};
+    audioInputGain = audioContext.createGain();
 
-    // Create an AudioContext and an Omnitone decoder.
-    var AudioContextObj = window.AudioContext || window.webkitAudioContext;
-	var audioContext = new AudioContextObj();
+	inputCustomAudioFile.onchange = function() {
+        console.log("Input custom file: ", this.files[0]);
+        var file = this.files[0];
+        if (file.type.match('audio.*')) {
+            document.getElementById("txtLoadedAudioFile").innerText = file.name + ' (' + file.type + ')';
+            audioElement.src = window.URL.createObjectURL(file);
+        }
+        else {
+            alert("Not an audio file");
+            return;
+        }
+    };
 
-	// Creates FOA decoder
-	var decoder = Omnitone.createFOADecoder(audioContext, audioElement, {
+    inputCustomAudioLink.onchange = function() {
+        console.log("Input custom link: ", this.value);
+        audioElement.src = window.URL.createObjectURL(this.value);
+    };
+
+	// Creates First Order Ambisonic Decoder
+	var decoderFOA = Omnitone.createHOARenderer(audioContext, {
+        HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
+        ambisonicOrder: 1,
+        // postGainDB: 30,
+        // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
+        // channels to the ACN format.
+		channelMap: [0, 3, 1, 2]
+    });
+
+    // Creates Second Order Ambisonic Decoder
+	var decoderSOA = Omnitone.createHOARenderer(audioContext, {
+		HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
+        ambisonicOrder: 2,
+        // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
+        // channels to the ACN format.
+		channelMap: [0, 3, 1, 2]
+    });
+
+	// Creates Third Order Ambisonic Decoder
+	var decoderTOA = Omnitone.createHOARenderer(audioContext, {
 		HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
         // postGainDB: 30,
         // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
         // channels to the ACN format.
-		// channelMap: [0, 3, 1, 2]
-	});
+		channelMap: [0, 3, 1, 2]
+    });
 
+    // Audio playback controls
 	var buttonPlayback = document.getElementById('eButtonPlayback');
-	//var selectSource = document.getElementById('eSelectSource');
-
-	// Audio playback controls
 	buttonPlayback.onclick = function (event) {
 		if (event.target.textContent === 'Play') {
-            event.target.textContent = 'Pause';
+            //event.target.textContent = 'Pause';
             window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: true } }) )
             audioElement.play();
-
-		} else {
-            event.target.textContent = 'Play';
+            startTimer();
+        }
+        else {
+            //event.target.textContent = 'Play';
             window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: false } }) )
-			audioElement.pause();
+            audioElement.pause();
+            stopTimer();
 		}
-	};
+    };
+
+    var playingTimer = false;
+    document.getElementById("status-audioplayer-current-time").innerText = 0;
+    var startTimer = function() {
+        playingTimer = setInterval(function() {
+            console.log("audioElement:", audioElement);
+            document.getElementById("status-audioplayer-current-time").innerText = Math.round(audioElement.currentTime);
+        }, 1000);
+    }
+
+    var stopTimer = function() {
+        clearInterval(playingTimer);
+    }
+
+    audioElement.addEventListener('loadedmetadata',function(){
+        audioElement.setAttribute('duration',audioElement.duration);
+        document.getElementById("status-audioplayer-total-time").innerText = Math.round(audioElement.duration);
+    },
+    false);
+
+    // Big play / pause icon
+    var btnToggleAudioPlayer = document.getElementById('btnToggleAudioPlayer');
+    addEvent(
+        btnToggleAudioPlayer,
+        'click',
+        function () {
+            console.dir(audioElement);
+            if (audioElement.paused && audioElement.currentTime >= 0 && !audioElement.ended) {
+                window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: true } }) )
+                audioElement.play();
+            }
+            else {
+                window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: false } }) )
+                audioElement.pause();
+            }
+        });
+
+    // Change Ambisonic decoder
+    var globalAmbiOrder = 2;
+    document.getElementById("status-ambisonic-order").innerText = "3rd order";
+    var btnToggleAmbisonicDecoderOrder = document.getElementById('btnToggleAmbisonicDecoderOrder');
+    addEvent(
+        document.getElementById('btnToggleAmbisonicDecoderOrder'),
+        'click',
+        function () {
+            globalAmbiOrder = (globalAmbiOrder+1)%3;
+            console.log(globalAmbiOrder)
+            if(globalAmbiOrder == 2)
+            {
+                document.getElementById("status-ambisonic-order").innerText = "3rd order";
+            }
+            else if(globalAmbiOrder == 1)
+            {
+                document.getElementById("status-ambisonic-order").innerText = "2nd order";
+            }
+            else
+            {
+                document.getElementById("status-ambisonic-order").innerText = "1st order";
+            }
+
+        });
 
 	// Initialize and then start playing the audio element.
 	// Initialize the decoder and activate the button when ready.
-	decoder.initialize().then(function () {
+	decoderFOA.initialize().then(function () {
 		buttonPlayback.disabled = false;
-		//selectSource.disabled = false;
-	}, function (onInitializationError) {
+        decoderFOA.output.connect(audioContext.destination);
+        decoderFOA.setRenderingMode('off');
+        audioInputGain.connect(decoderFOA.input);
+    },
+    function (onInitializationError) {
 		console.error(onInitializationError);
-	});
+    });
+
+	decoderSOA.initialize().then(function () {
+		buttonPlayback.disabled = false;
+        decoderSOA.output.connect(audioContext.destination);
+        decoderSOA.setRenderingMode('off');
+        audioInputGain.connect(decoderSOA.input);
+    },
+    function (onInitializationError) {
+		console.error(onInitializationError);
+    });
+
+	decoderTOA.initialize().then(function () {
+		buttonPlayback.disabled = false;
+        decoderTOA.output.connect(audioContext.destination);
+        decoderTOA.setRenderingMode('ambisonic');
+        audioElementSource.connect(audioInputGain);
+        audioInputGain.connect(decoderTOA.input);
+    },
+    function (onInitializationError) {
+		console.error(onInitializationError);
+    });
 
 	// Rotate the sound field.
 	//decoder.setRotationMatrix(rotationMatrix);
@@ -447,7 +608,7 @@
 	//decoder.setMode('bypass');
 
 	// Ambisonically decoded audio stream.
-	decoder.setMode('ambisonic');
+	//decoder.setMode('ambisonic');
 
 	// Disable encoding completely. (audio processing disabled)
 	//decoder.setMode('off');
@@ -458,8 +619,19 @@
 	//console.log(obj);
 
 	function ht_rotatesoundfield(mtx3) {
-		//console.log("Rotate mtx:", mtx3)
-		decoder.setRotationMatrix(mtx3)
+        //console.log("Rotate mtx:", mtx3)
+        if(globalAmbiOrder == 2)
+        {
+            decoderTOA.setRotationMatrix3(mtx3)
+        }
+        else if(globalAmbiOrder == 1)
+        {
+            decoderSOA.setRotationMatrix3(mtx3)
+        }
+        else
+        {
+            decoderFOA.setRotationMatrix3(mtx3)
+        }
     }
 
 	// ==========================================
@@ -776,7 +948,7 @@
 
         if(LIVEHTREF!==null) {
 
-            LIVEHTREFSAVE = LIVEHTREF 
+            LIVEHTREFSAVE = LIVEHTREF
             console.log("Saving and splitting ref")
             if(typeof LIVEHTREFSAVE == 'string') {
                 LIVEHTREFSAVE = LIVEHTREFSAVE.split(',')
@@ -821,6 +993,7 @@
     window.addEventListener("htsetreference", function(e) {
         let item = document.getElementById('btnToggleSetReference')
         let itemreset = document.getElementById('btnToggleResetReference')
+
         if(e.detail.htReference) {
             item.classList.add('ht-custom-btn--reference--on');
             itemreset.classList.remove('ht-custom-btn--reset--on');
@@ -829,11 +1002,12 @@
             itemreset.classList.add('ht-custom-btn--reset--on');
         }
 
-        let itemAudio = document.getElementById('btnToggleAudioPlayer')
         if(e.detail.audioPlaying) {
-            itemAudio.classList.add('ht-custom-btn--audio--playing');
+            document.getElementById('eButtonPlayback').textContent = 'Pause';
+            btnToggleAudioPlayer.classList.add('ht-custom-btn--audio--playing');
         } else {
-            itemAudio.classList.remove('ht-custom-btn--audio--playing');
+            document.getElementById('eButtonPlayback').textContent = 'Play';
+            btnToggleAudioPlayer.classList.remove('ht-custom-btn--audio--playing');
         }
     });
 
