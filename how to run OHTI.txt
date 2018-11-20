@@ -15,7 +15,7 @@ C:\Users\Bosse\Documents\BitBucketData\ohti-bossesand>node main_ht_app.js port 8
 
 // if you get Error: cannot find module "express" or other run the command npm install express or wit other module name.
 
-node main_ht_app.js
+node main_ht_app.js  port 82
 
 Use chrome to connect to  http://localhost:82  to start the ambisonic headtracked player
 
