@@ -1,7 +1,11 @@
 
 # OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings.
 
-Update 1 Nov 2018
+Update 20 Jan 2019
+
+I now have online demos of Omnitone and JSAmbionics rendering of Second amd Third order material on http://www.ohti.xyz
+The Examples are lightly modified code from Omnitone and JSAmbisonic projcect here on github.
+mostly to add posibility to select other demo sound clips.
 
 Now this project is using the September 2018 version of Omnitone.
 The GUI is improved to allow easier access to Local Ambisonic files,
