@@ -3,7 +3,7 @@
 
 Update 20 Jan 2019
 
-I now have online demos of Omnitone and JSAmbionics rendering of Second amd Third order material on http://www.ohti.xyz
+I now have online demos of Omnitone and JSAmbionics binaural rendering of Second and Third order material on http://www.ohti.xyz
 The Examples are lightly modified code from Omnitone and JSAmbisonic projcect here on github.
 mostly to add posibility to select other demo sound clips.
 
