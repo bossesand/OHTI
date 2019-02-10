@@ -30,3 +30,5 @@ SET PATH=C:\Program Files\Nodejs;%PATH%
 git clone --recursive https://github.com/nonolith/node-usb.git
 cd node-usb
 npm install
+
+https://zadig.akeo.ie/ is needed which basically replace the driver loaded for a particular device so now it is not appearing as a regular COM Port, it is now detected as a "real" USB Serial Device without a COM port attached to it, and now chrome is able to connect to it just fine even without enabling the new backend flag.
