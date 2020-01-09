@@ -39,6 +39,24 @@ The 4 quartenion values is compressed by z85 algorithm allowing the directional 
 
 We have verified that this way of communicating between OHTI Headtracker and Web player can send and update the directional information in a loop that is run with a delay of 10 milliseconds between  the action to read the 4 * 16 bit quaternion registers and encode with z85 and send one BLE packet.
 I estimate the possible update rate to be verified at over 90 Hz with this solution!
+----------------------------------------------------------------------------------------------------------------
+This was found in Jan 2020 but not tested.
+
+If you want to try a DIY solution without soldering for the headtracker hardware, it comes at a higher cost than the earlier described solution .
+
+https://www.smart-prototyping.com/Zio-nRF52832-Dev-Board-Qwiic-NRF-BLE  				$19.90
+Dimension: 30.0 x 55.3mm
+			
+https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO055.html 						$19.90
+Dimension: 14.2x36.7mm(with mounting tab), 14.2x24.9mm(without mounting tab).
+				
+https://www.smart-prototyping.com/Zio/zio-Components-Accessories/zio-cables/Qwiic-50mm-Cable-10pcs  	$6.99
+
+A Bosch IMU chip with other firmware for higher update rates, not tested as possible bno055 replacement with current firmware.
+https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO080.html						$25.90
+Dimension: 13.9x 36.2mm(with mounting tab), 13.9x24.7mm(without mounting tab).
+
+Power can be provided with a usb power bank for BLE use.
 
 ----------------------------------------------------------------------------------------------------------------
 Host and Player Software:
