@@ -1,6 +1,16 @@
 
 # OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings.
 
+2020 April
+Clarification, this should be more or less OS independent.
+The interface between headtracker and browser is written in JavaScript to be run on node.js.
+
+The rest of the application is run in the browser using JavaScript.
+
+Tests are done on Linux, OSX and windows 10.
+
+BLE on windows10 does not so far work well.
+
 Update 20 Jan 2019
 
 I now have online demos of Omnitone and JSAmbionics binaural rendering of Second and Third order material on http://www.ohti.xyz
