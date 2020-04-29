@@ -14,7 +14,7 @@
     "bigtext": "^0.1.8",
     "express": "^4.16.3",
     "http": "0.0.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "math3d": "^0.2.2",
     "noble": "^1.8.1",
     "noble-multidevice": "^1.8.1",
