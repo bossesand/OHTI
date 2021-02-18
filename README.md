@@ -4,6 +4,7 @@
 2020 April
 Clarification, this should be more or less OS independent.
 The interface between headtracker and browser is written in JavaScript to be run on node.js.
+NOTE 2021-02 OLD info above, Current middleware to convert OSC messages on port 9000 format IEM : SpaceRotator/quaternions value1, value2, value3, vaule4, the messages is sent on a websocket port 8080 for the OHTI Rev 2 palyer to use with a headtracker.
 
 The rest of the application is run in the browser using JavaScript.
 
@@ -15,7 +16,7 @@ Update 20 Jan 2019
 
 I now have online demos of Omnitone and JSAmbionics binaural rendering of Second and Third order material on http://www.ohti.xyz
 The Examples are lightly modified code from Omnitone and JSAmbisonic projcect here on github.
-mostly to add posibility to select other demo sound clips.
+mostly to add possibility to select other demo sound clips.
 
 Now this project is using the September 2018 version of Omnitone.
 The GUI is improved to allow easier access to Local Ambisonic files,
