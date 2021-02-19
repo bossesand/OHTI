@@ -1,6 +1,18 @@
 
 # OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings.
 
+February 19 2021
+The below is not upto date, there is a new design of the headtracker that use a esp8266 D1 Mini and a GY-BNO055 with straight pin connections between 8266 and BNO055 module.
+ The current headtracker in https://github.com/bossesand/OHTI-HT-osc-wifi uses a translating program between WiFi OSC SpaceRotator/quaternions qw,qx,qy,qz to a websocket interface (Win10 currently) for the OHTI Rev 2 headtracker supporting player rednders to binaural by Omnitone, The interface program can be downloaded from https://www.ohti.xyz 
+-wW,-qY,qX
+The OSC-Bridge-V3C.zip is a plugin written by        to interface several different headtrackers and send OSC messages tailored to different rotator VST's.
+It has been tested to support a serial headtracker sending forward to the https://www.ohti.xyz/OHTI-OSC-Receiver-msgpack-1.2.exe.zip plugin and it works in Chrome and Edge.
+
+I will update build descriptions as soon As I can find time.
+ 
+ 
+ The BLE version never did work well on windows 10.
+
 2020 April
 Clarification, this should be more or less OS independent.
 The interface between headtracker and browser is written in JavaScript to be run on node.js.
