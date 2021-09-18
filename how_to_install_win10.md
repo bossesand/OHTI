@@ -1,4 +1,3 @@
-
 Install npm and node on your win 10 computer, also python 2.7 its needed
 https://blog.teamtreehouse.com/install-node-js-npm-windows
 
@@ -21,23 +20,20 @@ https://github.com/noble/noble/blob/master/README.md
 install noble-uwp
 https://github.com/jasongin/noble-uwp
 
-
-
 npm install --global --production windows-build-tool
 npm install npm@latest -g
 
-npm install noble-uwp --no-optional   - for Windows 10 only!
-npm install noble --no-optional       - Is this really needed for Win10? 
+npm install noble-uwp --no-optional - for Windows 10 only!
+npm install noble --no-optional - Is this really needed for Win10?
 npm install serialport --no-optional
 npm install bluetooth-hci-socket --no-optional
 npm install usb --no-optional
 
-https://www.npmjs.com/package/node-gyp   - complete install instructions! 
+https://www.npmjs.com/package/node-gyp - complete install instructions!
 npm install -g node-pre-gyp
 npm install -g node-gyp
 
 npm install --unsafe-perm usb
-
 
 node-gyp --python C:/Python27/
 npm config set python C:/Python27/
@@ -54,5 +50,5 @@ git clone --recursive https://github.com/nonolith/node-usb.git
 cd node-usb
 npm install
 
-On windows 10 
+On windows 10
 https://zadig.akeo.ie/ is needed which basically replace the driver loaded for a particular device so now it is not appearing as a regular COM Port, it is now detected as a "real" USB Serial Device without a COM port attached to it, and now chrome is able to connect to it just fine even without enabling the new backend flag.
