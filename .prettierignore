@@ -1,0 +1,5 @@
+node_modules/
+static/IRs
+static/three.min.js
+
+.DS_Store

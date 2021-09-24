@@ -1,146 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Headtrack</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<script src="/jquery/dist/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <script src="/jquery/dist/jquery.min.js"></script>
   </head>
-<body>
-
-<div class="main-box">
-    <div class="main-box-headspace">
-        <div class="main-box--feedback">
-
-        </div>
-    </div>
-	<div class="main-box-container">
-
+  <body>
+    <div class="main-box">
+      <div class="main-box-headspace">
+        <div class="main-box--feedback"></div>
+      </div>
+      <div class="main-box-container">
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-status--socket" id="statusSocket">
-
-            </div>
+          <div
+            class="ht-custom-btn ht-custom-status--socket"
+            id="statusSocket"
+          ></div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--ble" id="btnToggleBLE">
-
-            </div>
+          <div class="ht-custom-btn ht-custom-btn--ble" id="btnToggleBLE"></div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--ble" id="btnToggleBLELocal">
-
-            </div>
+          <div
+            class="ht-custom-btn ht-custom-btn--ble"
+            id="btnToggleBLELocal"
+          ></div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--usb" id="btnToggleUSB">
-
-            </div>
+          <div class="ht-custom-btn ht-custom-btn--usb" id="btnToggleUSB"></div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--reference" id="btnToggleSetReference" title="Set headtracker reference">
-                <span class="tooltip--text">Set headtracker reference</span>
-            </div>
+          <div
+            class="ht-custom-btn ht-custom-btn--reference"
+            id="btnToggleSetReference"
+            title="Set headtracker reference"
+          >
+            <span class="tooltip--text">Set headtracker reference</span>
+          </div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--reset ht-custom-btn--reset--on" id="btnToggleResetReference" title="Reset headtracker changed reference">
-                <span class="tooltip--text">Reset headtracker changed reference</span>
-            </div>
+          <div
+            class="ht-custom-btn ht-custom-btn--reset ht-custom-btn--reset--on"
+            id="btnToggleResetReference"
+            title="Reset headtracker changed reference"
+          >
+            <span class="tooltip--text"
+              >Reset headtracker changed reference</span
+            >
+          </div>
         </div>
 
         <div class="ht-custom-btn--box ht-custom-btn--tooltip">
-            <div class="ht-custom-btn ht-custom-btn--audio" id="btnToggleAudioPlayer" title="Play / Pause sound">
-
-            </div>
+          <div
+            class="ht-custom-btn ht-custom-btn--audio"
+            id="btnToggleAudioPlayer"
+            title="Play / Pause sound"
+          ></div>
         </div>
-
-    </div>
-    <div class="main-box-container">
-
+      </div>
+      <div class="main-box-container">
         <div class="ht-custom-info--box">
-            <div class="ht-custom-info--euler" id="inputHeadtrackRefEuler"></div>
-            <br/>
-            <div class="ht-custom-info--euler-info">x=red, Y=green, Z=blue</div>
+          <div class="ht-custom-info--euler" id="inputHeadtrackRefEuler"></div>
+          <br />
+          <div class="ht-custom-info--euler-info">x=red, Y=green, Z=blue</div>
         </div>
+      </div>
 
-    </div>
-
-	<div class="container container-box pop-box--toggle" id="htcontrols--ble">
+      <div class="container container-box pop-box--toggle" id="htcontrols--ble">
         <h3 class="ht-form--button">Bluetooth headtracker from server</h3>
 
         <div class="ht-form--button">
-            <button id="inputStartScanBLE">Start discover/scan BLE</button>
-            <button id="inputStopScanBLE">Stop discover/scan BLE</button>
+          <button id="inputStartScanBLE">Start discover/scan BLE</button>
+          <button id="inputStopScanBLE">Stop discover/scan BLE</button>
         </div>
 
         <form action="" id="save-ht-port-ble">
-            <select name="inputBLEPorts" id="inputBLEPorts">
-                <option value="">No BLE port selected</option>
-            </select>
+          <select name="inputBLEPorts" id="inputBLEPorts">
+            <option value="">No BLE port selected</option>
+          </select>
         </form>
 
         <div class="ht-form--button">
-            <button id="inputConnectToBLE">Connect to BLE device</button>
+          <button id="inputConnectToBLE">Connect to BLE device</button>
         </div>
 
         <div class="ht-form--button">
-            <button id="inputStartHtWatchBLE">Start HT-track BLE</button>
-            <button id="inputStopHtWatchBLE">Stop HT-track BLE</button>
+          <button id="inputStartHtWatchBLE">Start HT-track BLE</button>
+          <button id="inputStopHtWatchBLE">Stop HT-track BLE</button>
         </div>
 
         <div class="ht-form--button">
-            <input type="text" id="inputWriteToBLE" value="2,2;" autocomplete="off" />
-            <button id="inputStartCalibration">Send calibration</button>
+          <input
+            type="text"
+            id="inputWriteToBLE"
+            value="2,2;"
+            autocomplete="off"
+          />
+          <button id="inputStartCalibration">Send calibration</button>
         </div>
+      </div>
 
-    </div>
-
-	<div class="container container-box pop-box--toggle" id="htcontrols--usb">
-        <h3 class="ht-form--button">USB Headtracker (<span>Port:</span> <span class="status-selected-port" id="status-selected-port"></span>, <span>Baud:</span> <span class="status-selected-baud" id="status-selected-baud"></span>)</h3>
+      <div class="container container-box pop-box--toggle" id="htcontrols--usb">
+        <h3 class="ht-form--button">
+          USB Headtracker (<span>Port:</span>
+          <span class="status-selected-port" id="status-selected-port"></span>,
+          <span>Baud:</span>
+          <span class="status-selected-baud" id="status-selected-baud"></span>)
+        </h3>
 
         <form action="" id="save-ht-port">
-            <select name="inputHeadtrackPorts" id="inputHeadtrackPorts">
-                <option value="">No port selected</option>
-            </select>
+          <select name="inputHeadtrackPorts" id="inputHeadtrackPorts">
+            <option value="">No port selected</option>
+          </select>
 
-            <select name="inputHeadtrackBaud" id="inputHeadtrackBaud">
-                <option value="" disabled>No baud selected</option>
-                <option value="300">300</option>
-                <option value="1200">1200</option>
-                <option value="2400">2400</option>
-                <option value="4800">4800</option>
-                <option value="9600">9600</option>
-                <option value="14400">1440</option>
-                <option value="19200">1920</option>
-                <option value="28800">28800</option>
-                <option value="38400">38400</option>
-                <option value="57600">57600</option>
-                <option value="115200">115200</option>
-                <option value="230400">230400</option>
-            </select>
+          <select name="inputHeadtrackBaud" id="inputHeadtrackBaud">
+            <option value="" disabled>No baud selected</option>
+            <option value="300">300</option>
+            <option value="1200">1200</option>
+            <option value="2400">2400</option>
+            <option value="4800">4800</option>
+            <option value="9600">9600</option>
+            <option value="14400">1440</option>
+            <option value="19200">1920</option>
+            <option value="28800">28800</option>
+            <option value="38400">38400</option>
+            <option value="57600">57600</option>
+            <option value="115200">115200</option>
+            <option value="230400">230400</option>
+          </select>
 
-            <button>Save port & baud</button>
+          <button>Save port & baud</button>
         </form>
 
-		<div class="ht-form--button">
-            <button id="inputGetAvailableUSB">Get avaiable serial i/o</button>
+        <div class="ht-form--button">
+          <button id="inputGetAvailableUSB">Get avaiable serial i/o</button>
         </div>
         <div class="ht-form--button">
-            <button id="inputStartHtWatchSerial">Start HT-track Serial USB</button>
-            <button id="inputStopHtWatchSerial">Stop HT-track Serial USB</button>
+          <button id="inputStartHtWatchSerial">
+            Start HT-track Serial USB
+          </button>
+          <button id="inputStopHtWatchSerial">Stop HT-track Serial USB</button>
         </div>
+      </div>
 
-    </div>
-
-	<div class="container container-box pop-box--toggle" id="htcontrols">
+      <div class="container container-box pop-box--toggle" id="htcontrols">
         <h3 class="ht-form--button">Headtracking settings and playout</h3>
 
-		<!--<form action="" id="save-ht-ref">-->
-			<!--<label for="inputHeadtrackRef">
+        <!--<form action="" id="save-ht-ref">-->
+        <!--<label for="inputHeadtrackRef">
                 Headtrack REF From Sensor:
             </label>
             <input type="text" disabled="disabled" id="inputHeadtrackRef" autocomplete="off" />-->
@@ -148,211 +164,268 @@
         <!--</form>-->
 
         <div class="ht-form--button">
-            <div class="input-status-feedback">
-                <span>Saved reference:</span> <span class="status-ht-reference" id="status-ht-reference"></span>
-            </div>
+          <div class="input-status-feedback">
+            <span>Saved reference:</span>
+            <span class="status-ht-reference" id="status-ht-reference"></span>
+          </div>
         </div>
 
         <div class="ht-form--button">
-            <button id="inputSaveHeadtrackReference" class="custom-btn">Save reference</button> 
-            <button id="inputResetHeadtrackReference" class="custom-btn">Reset reference</button>
+          <button id="inputSaveHeadtrackReference" class="custom-btn">
+            Save reference
+          </button>
+          <button id="inputResetHeadtrackReference" class="custom-btn">
+            Reset reference
+          </button>
         </div>
 
         <div class="ht-form--button">
-            <div class="input-status-feedback">
-                <span>Current ambisonic order:</span> <span class="status-ht-reference" id="status-ambisonic-order"></span>
-            </div>
+          <div class="input-status-feedback">
+            <span>Current ambisonic order:</span>
+            <span
+              class="status-ht-reference"
+              id="status-ambisonic-order"
+            ></span>
+          </div>
         </div>
 
         <div class="ht-form--button">
-            <button id="btnToggleAmbisonicDecoderOrder" class="custom-btn">Toggle ambisonic order</button>
+          <button id="btnToggleAmbisonicDecoderOrder" class="custom-btn">
+            Toggle ambisonic order
+          </button>
         </div>
 
         <div class="ht-form--button">
-            <label for="inputCustomAudioFile" class="custom-file-upload-btn">
-                Select a file on your computer
-            </label>
-            <input id="inputCustomAudioFile" class="input-file-upload input-load-audio-file" type="file" accept="audio/*" />
-            <div class="input-file-loaded-information">
-                <span id="txtLoadedAudioFile"></span>
-            </div>
-            <!-- todo set initial file name -->
+          <label for="inputCustomAudioFile" class="custom-file-upload-btn">
+            Select a file on your computer
+          </label>
+          <input
+            id="inputCustomAudioFile"
+            class="input-file-upload input-load-audio-file"
+            type="file"
+            accept="audio/*"
+          />
+          <div class="input-file-loaded-information">
+            <span id="txtLoadedAudioFile"></span>
+          </div>
+          <!-- todo set initial file name -->
         </div>
 
         <div class="ht-form--button">
-            <div class="input-status-feedback">
-                <span>Current time:</span> (<span id="status-audioplayer-current-time"></span> / <span id="status-audioplayer-total-time"></span>)
-            </div>
+          <div class="input-status-feedback">
+            <span>Current time:</span> (<span
+              id="status-audioplayer-current-time"
+            ></span>
+            / <span id="status-audioplayer-total-time"></span>)
+          </div>
         </div>
 
         <div class="ht-form--button">
-            <button id="eButtonPlayback" disabled>Play</button>
+          <button id="eButtonPlayback" disabled>Play</button>
         </div>
 
         <div class="ht-form--button">
-            <input id="inputCustomAudioLink" class="" type="text" />
+          <input id="inputCustomAudioLink" class="" type="text" />
         </div>
+      </div>
+    </div>
 
-	</div>
-</div>
+    <div id="htGfxScene" class="canvasFx"></div>
 
-<div id="htGfxScene" class="canvasFx">
-
-</div>
-
-
-	<script src="/socket.io/socket.io.js"></script>
-	<!--<script src="/three/build/three.min.js"></script>-->
+    <script src="/socket.io/socket.io.js"></script>
+    <!--<script src="/three/build/three.min.js"></script>-->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js"></script>-->
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
-	<script src="/omnitone/build/omnitone.min.js"></script>
-	<script src="/bigtext/dist/bigtext.js"></script> <!-- todo remove -->
-	<script>
-
-    addEvent(
-        document.getElementById('btnToggleBLELocal'),
-        'click',
+    <script src="/omnitone/build/omnitone.min.js"></script>
+    <script src="/bigtext/dist/bigtext.js"></script>
+    <!-- todo remove -->
+    <script>
+      addEvent(
+        document.getElementById("btnToggleBLELocal"),
+        "click",
         function () {
-            navigator.bluetooth.requestDevice({
-            acceptAllDevices: true,
-            //filters: [ {services: ['00001531-1212-efde-1523-785feabcd123', '6e400003b-5a3f-393e-0a9e-50e24dcca9e']} ]
-        }) // ,optionalServices: ['battery_service']
-        .then(device => {
-            // Human-readable name of the device.
-            console.log(device.name);
-            console.dir(device);
-            //console.dir(device.getPrimaryServices())
+          navigator.bluetooth
+            .requestDevice({
+              acceptAllDevices: true,
+              //filters: [ {services: ['00001531-1212-efde-1523-785feabcd123', '6e400003b-5a3f-393e-0a9e-50e24dcca9e']} ]
+            }) // ,optionalServices: ['battery_service']
+            .then((device) => {
+              // Human-readable name of the device.
+              console.log(device.name);
+              console.dir(device);
+              //console.dir(device.getPrimaryServices())
 
-            // Attempts to connect to remote GATT Server.
-            return device.gatt.connect();
-        })
-        .then(server => {
-            // Getting Battery Level Characteristic...
-            console.log('Getting Server...');
-            console.dir(server);
-            console.dir()
-            server.getPrimaryServices().then(function(data) {
-                console.log("Getprim,",data);
+              // Attempts to connect to remote GATT Server.
+              return device.gatt.connect();
             })
-            //return service.getCharacteristic('battery_level');
-        })
-        .then(service => {
-            console.log('Getting Characteristic...');
-            console.dir(service);
-            if(service !== undefined)
-            {
+            .then((server) => {
+              // Getting Battery Level Characteristic...
+              console.log("Getting Server...");
+              console.dir(server);
+              console.dir();
+              server.getPrimaryServices().then(function (data) {
+                console.log("Getprim,", data);
+              });
+              //return service.getCharacteristic('battery_level');
+            })
+            .then((service) => {
+              console.log("Getting Characteristic...");
+              console.dir(service);
+              if (service !== undefined) {
                 return service.getCharacteristic(characteristicUuid);
-            }
-        })
-        .then(characteristic => {
-            if(characteristic !== undefined) {
-                console.log('> Characteristic UUID:  ' + characteristic.uuid);
-                console.log('> Broadcast:            ' + characteristic.properties.broadcast);
-                console.log('> Read:                 ' + characteristic.properties.read);
-                console.log('> Write w/o response:   ' + characteristic.properties.writeWithoutResponse);
-                console.log('> Write:                ' + characteristic.properties.write);
-                console.log('> Notify:               ' + characteristic.properties.notify);
-                console.log('> Indicate:             ' + characteristic.properties.indicate);
-                console.log('> Signed Write:         ' + characteristic.properties.authenticatedSignedWrites);
-                console.log('> Queued Write:         ' + characteristic.properties.reliableWrite);
-                console.log('> Writable Auxiliaries: ' + characteristic.properties.writableAuxiliaries);
-            }
-        })
-        .catch(error => { console.log(error); });
-    });
+              }
+            })
+            .then((characteristic) => {
+              if (characteristic !== undefined) {
+                console.log("> Characteristic UUID:  " + characteristic.uuid);
+                console.log(
+                  "> Broadcast:            " +
+                    characteristic.properties.broadcast
+                );
+                console.log(
+                  "> Read:                 " + characteristic.properties.read
+                );
+                console.log(
+                  "> Write w/o response:   " +
+                    characteristic.properties.writeWithoutResponse
+                );
+                console.log(
+                  "> Write:                " + characteristic.properties.write
+                );
+                console.log(
+                  "> Notify:               " + characteristic.properties.notify
+                );
+                console.log(
+                  "> Indicate:             " +
+                    characteristic.properties.indicate
+                );
+                console.log(
+                  "> Signed Write:         " +
+                    characteristic.properties.authenticatedSignedWrites
+                );
+                console.log(
+                  "> Queued Write:         " +
+                    characteristic.properties.reliableWrite
+                );
+                console.log(
+                  "> Writable Auxiliaries: " +
+                    characteristic.properties.writableAuxiliaries
+                );
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      );
 
-	// ==========================================
-	// 3D Graphics, THREE.js
-	var renderer, scene, camera
-	var rotationx = rotationy = rotationz = 0
+      // ==========================================
+      // 3D Graphics, THREE.js
+      var renderer, scene, camera;
+      var rotationx = (rotationy = rotationz = 0);
 
-	// Set the scene size.
-	const WIDTH = window.innerWidth || 300;
-	const HEIGHT = window.innerHeight || 300;
+      // Set the scene size.
+      const WIDTH = window.innerWidth || 300;
+      const HEIGHT = window.innerHeight || 300;
 
-	// Set some camera attributes.
-	const VIEW_ANGLE = 50;
-	const ORIGINALASPECT = WIDTH / HEIGHT;
-    const NEAR = 0.1;
-    const FAR = 1000;
+      // Set some camera attributes.
+      const VIEW_ANGLE = 50;
+      const ORIGINALASPECT = WIDTH / HEIGHT;
+      const NEAR = 0.1;
+      const FAR = 1000;
 
-	var _q1 = new THREE.Quaternion();
+      var _q1 = new THREE.Quaternion();
 
-	function rotateGLObjectQuaternion( object, quat ) {
-		//_q1.setFromAxisAngle( axis, angle );
+      function rotateGLObjectQuaternion(object, quat) {
+        //_q1.setFromAxisAngle( axis, angle );
         // TODO: Too much array accessing..
 
-        if(typeof quat == 'undefined' || typeof object == 'undefined') {
-            return;
+        if (typeof quat == "undefined" || typeof object == "undefined") {
+          return;
         }
 
-		object.quaternion._w = quat[0]
-		object.quaternion._x = quat[1]
-		object.quaternion._y = quat[2]
-        object.quaternion._z = quat[3]
+        object.quaternion._w = quat[0];
+        object.quaternion._x = quat[1];
+        object.quaternion._y = quat[2];
+        object.quaternion._z = quat[3];
 
         //object.quaternion.set(quat[2], quat[3], quat[4], quat[1]);
-        var a = new THREE.Euler().setFromQuaternion( new THREE.Quaternion().set(quat[1],quat[2],quat[3],quat[0]).normalize() , 'XYZ')
-        $('#inputHeadtrackRefEuler').html("X:" + THREE.Math.radToDeg(parseFloat(Math.round(a.x * 100) / 100)).toFixed(2) + " Y: " + THREE.Math.radToDeg(parseFloat(Math.round(a.y * 100) / 100)).toFixed(2) + " Z: " + THREE.Math.radToDeg(parseFloat(Math.round(a.z * 100) / 100)).toFixed(2))
+        var a = new THREE.Euler().setFromQuaternion(
+          new THREE.Quaternion()
+            .set(quat[1], quat[2], quat[3], quat[0])
+            .normalize(),
+          "XYZ"
+        );
+        $("#inputHeadtrackRefEuler").html(
+          "X:" +
+            THREE.Math.radToDeg(
+              parseFloat(Math.round(a.x * 100) / 100)
+            ).toFixed(2) +
+            " Y: " +
+            THREE.Math.radToDeg(
+              parseFloat(Math.round(a.y * 100) / 100)
+            ).toFixed(2) +
+            " Z: " +
+            THREE.Math.radToDeg(
+              parseFloat(Math.round(a.z * 100) / 100)
+            ).toFixed(2)
+        );
+      }
 
-	}
+      var scene = new THREE.Scene();
 
-    var scene = new THREE.Scene();
-
-    // Create camera
-	camera = new THREE.PerspectiveCamera(
+      // Create camera
+      camera = new THREE.PerspectiveCamera(
         VIEW_ANGLE,
         ORIGINALASPECT,
         NEAR,
         FAR
-    );
+      );
 
-    // Renderer
-	var renderer = new THREE.WebGLRenderer(
-        { antialias: true, alpha: true }
-    );
+      // Renderer
+      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-    renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize(WIDTH, HEIGHT);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(WIDTH, HEIGHT);
 
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
-    renderer.autoClear = false;
-    renderer.setClearColor(0x000000, 0.0);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+      renderer.autoClear = false;
+      renderer.setClearColor(0x000000, 0.0);
 
-    // Helper
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+      // Helper
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-	// Attach the renderer-supplied DOM element.
-	const container = document.querySelector('#htGfxScene');
-	container.appendChild(renderer.domElement);
+      // Attach the renderer-supplied DOM element.
+      const container = document.querySelector("#htGfxScene");
+      container.appendChild(renderer.domElement);
 
-    // Extra Helpers
-    var axesHelper = new THREE.AxesHelper( 3 );
-    scene.add( axesHelper );
+      // Extra Helpers
+      var axesHelper = new THREE.AxesHelper(3);
+      scene.add(axesHelper);
 
-    var axesHelper2 = new THREE.AxesHelper( 2 );
-    //scene.add( axesHelper2 );
+      var axesHelper2 = new THREE.AxesHelper(2);
+      //scene.add( axesHelper2 );
 
-    // Create lights
-    var light = new THREE.PointLight(0xEEEEEE);
-    light.position.set(20, 0, 20);
-    scene.add(light);
+      // Create lights
+      var light = new THREE.PointLight(0xeeeeee);
+      light.position.set(20, 0, 20);
+      scene.add(light);
 
-    light2 = new THREE.DirectionalLight( 0xEEEEEE, 0.4 );
-    light2.position.set( 2.75, 10, 0.5 );
-    scene.add(light2);
+      light2 = new THREE.DirectionalLight(0xeeeeee, 0.4);
+      light2.position.set(2.75, 10, 0.5);
+      scene.add(light2);
 
-    var lightAmb = new THREE.AmbientLight(0x777777);
-    scene.add(lightAmb);
+      var lightAmb = new THREE.AmbientLight(0x777777);
+      scene.add(lightAmb);
 
-    // Create geometry shape
-    var pivot = new THREE.Group();
-    //scene.add( pivot );
+      // Create geometry shape
+      var pivot = new THREE.Group();
+      //scene.add( pivot );
 
-    /*var cube;
+      /*var cube;
     var loader = new THREE.ObjectLoader();
     loader.load("model.json", function ( obj, next ) {
 
@@ -367,57 +440,57 @@
         renderer.render( scene, camera );
     });*/
 
-    // BOX (IMU CHIP)
-    var boxGeom = new THREE.BoxGeometry( 2, 2, 0.5 ); // width, height, depth
-    var boxMaterial = new THREE.MeshLambertMaterial( {
-        color: 0x7f7f7f
-    });
-    box = new THREE.Mesh( boxGeom, boxMaterial );
-    box.position.set( 0, 0, 0 );
+      // BOX (IMU CHIP)
+      var boxGeom = new THREE.BoxGeometry(2, 2, 0.5); // width, height, depth
+      var boxMaterial = new THREE.MeshLambertMaterial({
+        color: 0x7f7f7f,
+      });
+      box = new THREE.Mesh(boxGeom, boxMaterial);
+      box.position.set(0, 0, 0);
 
-    // Camera
-    camera.position.set( -15, 0, 3 );
-    camera.up = new THREE.Vector3(0,0,1);
-    camera.lookAt( box.position.x, box.position.y, box.position.z );
-    scene.add( box );
+      // Camera
+      camera.position.set(-15, 0, 3);
+      camera.up = new THREE.Vector3(0, 0, 1);
+      camera.lookAt(box.position.x, box.position.y, box.position.z);
+      scene.add(box);
 
-    // Pre render scene
-    renderer.render( scene, camera );
+      // Pre render scene
+      renderer.render(scene, camera);
 
-	function ht_rotategfx(htquaternion) {
-		// Set Quaternions on Cube and render scene
-		//requestAnimationFrame( render );
-        rotateGLObjectQuaternion( box, htquaternion );
+      function ht_rotategfx(htquaternion) {
+        // Set Quaternions on Cube and render scene
+        //requestAnimationFrame( render );
+        rotateGLObjectQuaternion(box, htquaternion);
         //rotateGLObjectQuaternion( pivot, htquaternion );
-        rotateGLObjectQuaternion( axesHelper, htquaternion );
+        rotateGLObjectQuaternion(axesHelper, htquaternion);
         //rotateGLObjectQuaternion( cube2, htquaternion );
-		//TODO: mofiy directly like below instead of function..
-		/*cube.quaternion._w = htquaternion[1]
+        //TODO: mofiy directly like below instead of function..
+        /*cube.quaternion._w = htquaternion[1]
 		cube.quaternion._x = htquaternion[2]
 		cube.quaternion._y = htquaternion[3]
 		cube.quaternion._z = htquaternion[4]*/
-		renderer.render( scene, camera );
-	}
+        renderer.render(scene, camera);
+      }
 
-    window.addEventListener("resize", onWindowResize, false);
+      window.addEventListener("resize", onWindowResize, false);
 
-    function onWindowResize() {
+      function onWindowResize() {
         // check width
         let w = window.innerWidth;
         let h = window.innerHeight;
 
-        console.dir(renderer)
-        console.log(w,h)
+        console.dir(renderer);
+        console.log(w, h);
 
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
-        renderer.render( scene, camera );
-    }
+        renderer.render(scene, camera);
+      }
 
-	// ==========================================
-	// Audio-part, Omnitone
-	/*
+      // ==========================================
+      // Audio-part, Omnitone
+      /*
 	context (AudioContext): an AudioContext object.
 	element (MediaElement): A target video or audio element for streaming.
 	options (Object): options for decoder.
@@ -426,641 +499,751 @@
     channelMap (Array): A custom channel map.
     */
 
-    // Create an AudioContext and an Omnitone decoder.
-	var audioContext = new AudioContext();
+      // Create an AudioContext and an Omnitone decoder.
+      var audioContext = new AudioContext();
 
-    var audioSources = {
+      var audioSources = {
         //'speech': 'sounds/4ch_B_FuMaNorm_FuMaOrd_speech.wav'
-        'speech' : { 'path' : 'sounds/1dirct-12 sec.wav' },
-        'sample' : { 'path' : 'sounds/sample2.wav' }
-    };
+        speech: { path: "sounds/1dirct-12 sec.wav" },
+        sample: { path: "sounds/sample2.wav" },
+      };
 
-	// Prepare audio element to feed the ambisonic source audio feed.
-    var audioElement = document.createElement('audio');
-    audioElementSource = audioContext.createMediaElementSource(audioElement);
-	audioElement.loop = true;
-	audioElement.crossOrigin = 'anonymous';
-	audioElement.src = audioSources['speech']['path'];
+      // Prepare audio element to feed the ambisonic source audio feed.
+      var audioElement = document.createElement("audio");
+      audioElementSource = audioContext.createMediaElementSource(audioElement);
+      audioElement.loop = true;
+      audioElement.crossOrigin = "anonymous";
+      audioElement.src = audioSources["speech"]["path"];
 
-    audioInputGain = audioContext.createGain();
+      audioInputGain = audioContext.createGain();
 
-	inputCustomAudioFile.onchange = function() {
+      inputCustomAudioFile.onchange = function () {
         console.log("Input custom file: ", this.files[0]);
         var file = this.files[0];
-        if (file.type.match('audio.*')) {
-            document.getElementById("txtLoadedAudioFile").innerText = file.name + ' (' + file.type + ')';
-            audioElement.src = window.URL.createObjectURL(file);
+        if (file.type.match("audio.*")) {
+          document.getElementById("txtLoadedAudioFile").innerText =
+            file.name + " (" + file.type + ")";
+          audioElement.src = window.URL.createObjectURL(file);
+        } else {
+          alert("Not an audio file");
+          return;
         }
-        else {
-            alert("Not an audio file");
-            return;
-        }
-    };
+      };
 
-    inputCustomAudioLink.onchange = function() {
+      inputCustomAudioLink.onchange = function () {
         console.log("Input custom link: ", this.value);
         audioElement.src = window.URL.createObjectURL(this.value);
-    };
+      };
 
-	// Creates First Order Ambisonic Decoder
-	var decoderFOA = Omnitone.createHOARenderer(audioContext, {
-        HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
+      // Creates First Order Ambisonic Decoder
+      var decoderFOA = Omnitone.createHOARenderer(audioContext, {
+        HRTFSetUrl: "/omnitone/build/resources/", // FuMa ordering (W,X,Y,Z).
         ambisonicOrder: 1,
         // postGainDB: 30,
         // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
         // channels to the ACN format.
-		channelMap: [0, 3, 1, 2]
-    });
+        channelMap: [0, 3, 1, 2],
+      });
 
-    // Creates Second Order Ambisonic Decoder
-	var decoderSOA = Omnitone.createHOARenderer(audioContext, {
-		HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
+      // Creates Second Order Ambisonic Decoder
+      var decoderSOA = Omnitone.createHOARenderer(audioContext, {
+        HRTFSetUrl: "/omnitone/build/resources/", // FuMa ordering (W,X,Y,Z).
         ambisonicOrder: 2,
         // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
         // channels to the ACN format.
-		channelMap: [0, 3, 1, 2]
-    });
+        channelMap: [0, 3, 1, 2],
+      });
 
-	// Creates Third Order Ambisonic Decoder
-	var decoderTOA = Omnitone.createHOARenderer(audioContext, {
-		HRTFSetUrl: '/omnitone/build/resources/', // FuMa ordering (W,X,Y,Z).
+      // Creates Third Order Ambisonic Decoder
+      var decoderTOA = Omnitone.createHOARenderer(audioContext, {
+        HRTFSetUrl: "/omnitone/build/resources/", // FuMa ordering (W,X,Y,Z).
         // postGainDB: 30,
         // The example audio is in the FuMa ordering (W,X,Y,Z). So remap the
         // channels to the ACN format.
-		channelMap: [0, 3, 1, 2]
-    });
+        channelMap: [0, 3, 1, 2],
+      });
 
-    // Audio playback controls
-	var buttonPlayback = document.getElementById('eButtonPlayback');
-	buttonPlayback.onclick = function (event) {
-		if (event.target.textContent === 'Play') {
-            //event.target.textContent = 'Pause';
-            window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: true } }) )
-            audioElement.play();
-            startTimer();
+      // Audio playback controls
+      var buttonPlayback = document.getElementById("eButtonPlayback");
+      buttonPlayback.onclick = function (event) {
+        if (event.target.textContent === "Play") {
+          //event.target.textContent = 'Pause';
+          window.dispatchEvent(
+            new CustomEvent("htsetreference", {
+              detail: { audioPlaying: true },
+            })
+          );
+          audioElement.play();
+          startTimer();
+        } else {
+          //event.target.textContent = 'Play';
+          window.dispatchEvent(
+            new CustomEvent("htsetreference", {
+              detail: { audioPlaying: false },
+            })
+          );
+          audioElement.pause();
+          stopTimer();
         }
-        else {
-            //event.target.textContent = 'Play';
-            window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: false } }) )
-            audioElement.pause();
-            stopTimer();
-		}
-    };
+      };
 
-    var playingTimer = false;
-    document.getElementById("status-audioplayer-current-time").innerText = 0;
-    var startTimer = function() {
-        playingTimer = setInterval(function() {
-            console.log("audioElement:", audioElement);
-            document.getElementById("status-audioplayer-current-time").innerText = Math.round(audioElement.currentTime);
+      var playingTimer = false;
+      document.getElementById("status-audioplayer-current-time").innerText = 0;
+      var startTimer = function () {
+        playingTimer = setInterval(function () {
+          console.log("audioElement:", audioElement);
+          document.getElementById("status-audioplayer-current-time").innerText =
+            Math.round(audioElement.currentTime);
         }, 1000);
-    }
+      };
 
-    var stopTimer = function() {
+      var stopTimer = function () {
         clearInterval(playingTimer);
-    }
+      };
 
-    audioElement.addEventListener('loadedmetadata',function(){
-        audioElement.setAttribute('duration',audioElement.duration);
-        document.getElementById("status-audioplayer-total-time").innerText = Math.round(audioElement.duration);
-    },
-    false);
-
-    // Big play / pause icon
-    var btnToggleAudioPlayer = document.getElementById('btnToggleAudioPlayer');
-    addEvent(
-        btnToggleAudioPlayer,
-        'click',
+      audioElement.addEventListener(
+        "loadedmetadata",
         function () {
-            console.dir(audioElement);
-            if (audioElement.paused && audioElement.currentTime >= 0 && !audioElement.ended) {
-                window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: true } }) )
-                audioElement.play();
-            }
-            else {
-                window.dispatchEvent( new CustomEvent("htsetreference", { detail: { audioPlaying: false } }) )
-                audioElement.pause();
-            }
-        });
+          audioElement.setAttribute("duration", audioElement.duration);
+          document.getElementById("status-audioplayer-total-time").innerText =
+            Math.round(audioElement.duration);
+        },
+        false
+      );
 
-    // Change Ambisonic decoder
-    var globalAmbiOrder = 2;
-    document.getElementById("status-ambisonic-order").innerText = "3rd order";
-    var btnToggleAmbisonicDecoderOrder = document.getElementById('btnToggleAmbisonicDecoderOrder');
-    addEvent(
-        document.getElementById('btnToggleAmbisonicDecoderOrder'),
-        'click',
+      // Big play / pause icon
+      var btnToggleAudioPlayer = document.getElementById(
+        "btnToggleAudioPlayer"
+      );
+      addEvent(btnToggleAudioPlayer, "click", function () {
+        console.dir(audioElement);
+        if (
+          audioElement.paused &&
+          audioElement.currentTime >= 0 &&
+          !audioElement.ended
+        ) {
+          window.dispatchEvent(
+            new CustomEvent("htsetreference", {
+              detail: { audioPlaying: true },
+            })
+          );
+          audioElement.play();
+        } else {
+          window.dispatchEvent(
+            new CustomEvent("htsetreference", {
+              detail: { audioPlaying: false },
+            })
+          );
+          audioElement.pause();
+        }
+      });
+
+      // Change Ambisonic decoder
+      var globalAmbiOrder = 2;
+      document.getElementById("status-ambisonic-order").innerText = "3rd order";
+      var btnToggleAmbisonicDecoderOrder = document.getElementById(
+        "btnToggleAmbisonicDecoderOrder"
+      );
+      addEvent(
+        document.getElementById("btnToggleAmbisonicDecoderOrder"),
+        "click",
         function () {
-            globalAmbiOrder = (globalAmbiOrder+1)%3;
-            console.log(globalAmbiOrder)
-            if(globalAmbiOrder == 2)
-            {
-                document.getElementById("status-ambisonic-order").innerText = "3rd order";
-            }
-            else if(globalAmbiOrder == 1)
-            {
-                document.getElementById("status-ambisonic-order").innerText = "2nd order";
-            }
-            else
-            {
-                document.getElementById("status-ambisonic-order").innerText = "1st order";
-            }
+          globalAmbiOrder = (globalAmbiOrder + 1) % 3;
+          console.log(globalAmbiOrder);
+          if (globalAmbiOrder == 2) {
+            document.getElementById("status-ambisonic-order").innerText =
+              "3rd order";
+          } else if (globalAmbiOrder == 1) {
+            document.getElementById("status-ambisonic-order").innerText =
+              "2nd order";
+          } else {
+            document.getElementById("status-ambisonic-order").innerText =
+              "1st order";
+          }
+        }
+      );
 
-        });
+      // Initialize and then start playing the audio element.
+      // Initialize the decoder and activate the button when ready.
+      decoderFOA.initialize().then(
+        function () {
+          buttonPlayback.disabled = false;
+          decoderFOA.output.connect(audioContext.destination);
+          decoderFOA.setRenderingMode("off");
+          audioInputGain.connect(decoderFOA.input);
+        },
+        function (onInitializationError) {
+          console.error(onInitializationError);
+        }
+      );
 
-	// Initialize and then start playing the audio element.
-	// Initialize the decoder and activate the button when ready.
-	decoderFOA.initialize().then(function () {
-		buttonPlayback.disabled = false;
-        decoderFOA.output.connect(audioContext.destination);
-        decoderFOA.setRenderingMode('off');
-        audioInputGain.connect(decoderFOA.input);
-    },
-    function (onInitializationError) {
-		console.error(onInitializationError);
-    });
+      decoderSOA.initialize().then(
+        function () {
+          buttonPlayback.disabled = false;
+          decoderSOA.output.connect(audioContext.destination);
+          decoderSOA.setRenderingMode("off");
+          audioInputGain.connect(decoderSOA.input);
+        },
+        function (onInitializationError) {
+          console.error(onInitializationError);
+        }
+      );
 
-	decoderSOA.initialize().then(function () {
-		buttonPlayback.disabled = false;
-        decoderSOA.output.connect(audioContext.destination);
-        decoderSOA.setRenderingMode('off');
-        audioInputGain.connect(decoderSOA.input);
-    },
-    function (onInitializationError) {
-		console.error(onInitializationError);
-    });
+      decoderTOA.initialize().then(
+        function () {
+          buttonPlayback.disabled = false;
+          decoderTOA.output.connect(audioContext.destination);
+          decoderTOA.setRenderingMode("ambisonic");
+          audioElementSource.connect(audioInputGain);
+          audioInputGain.connect(decoderTOA.input);
+        },
+        function (onInitializationError) {
+          console.error(onInitializationError);
+        }
+      );
 
-	decoderTOA.initialize().then(function () {
-		buttonPlayback.disabled = false;
-        decoderTOA.output.connect(audioContext.destination);
-        decoderTOA.setRenderingMode('ambisonic');
-        audioElementSource.connect(audioInputGain);
-        audioInputGain.connect(decoderTOA.input);
-    },
-    function (onInitializationError) {
-		console.error(onInitializationError);
-    });
+      // Rotate the sound field.
+      //decoder.setRotationMatrix(rotationMatrix);
 
-	// Rotate the sound field.
-	//decoder.setRotationMatrix(rotationMatrix);
+      // Mono or regular multi-channel layouts.
+      //decoder.setMode('bypass');
 
-	// Mono or regular multi-channel layouts.
-	//decoder.setMode('bypass');
+      // Ambisonically decoded audio stream.
+      //decoder.setMode('ambisonic');
 
-	// Ambisonically decoded audio stream.
-	//decoder.setMode('ambisonic');
+      // Disable encoding completely. (audio processing disabled)
+      //decoder.setMode('off');
 
-	// Disable encoding completely. (audio processing disabled)
-	//decoder.setMode('off');
+      // Creates FOA Rotator to use directly with more functions
+      var rotator = Omnitone.createFOARotator(audioContext);
+      //var obj = decoder._foaRotator;
+      //console.log(obj);
 
-	// Creates FOA Rotator to use directly with more functions
-	var rotator = Omnitone.createFOARotator(audioContext);
-	//var obj = decoder._foaRotator;
-	//console.log(obj);
-
-	function ht_rotatesoundfield(mtx3) {
+      function ht_rotatesoundfield(mtx3) {
         //console.log("Rotate mtx:", mtx3)
-        if(globalAmbiOrder == 2)
-        {
-            decoderTOA.setRotationMatrix3(mtx3)
+        if (globalAmbiOrder == 2) {
+          decoderTOA.setRotationMatrix3(mtx3);
+        } else if (globalAmbiOrder == 1) {
+          decoderSOA.setRotationMatrix3(mtx3);
+        } else {
+          decoderFOA.setRotationMatrix3(mtx3);
         }
-        else if(globalAmbiOrder == 1)
-        {
-            decoderSOA.setRotationMatrix3(mtx3)
-        }
-        else
-        {
-            decoderFOA.setRotationMatrix3(mtx3)
-        }
-    }
+      }
 
-	// ==========================================
-	// Headtrack
-	var socket = io()
-	var statusGroup = $('#status-page-group')
+      // ==========================================
+      // Headtrack
+      var socket = io();
+      var statusGroup = $("#status-page-group");
 
-	var SERIALPORT,
+      var SERIALPORT,
         SERIALBAUD,
-        HTREFERENCE =  { wref: null, xref: null, yref: null, zref: null, status: false },
+        HTREFERENCE = {
+          wref: null,
+          xref: null,
+          yref: null,
+          zref: null,
+          status: false,
+        },
         /*HTREFERENCE_W = null,
 		HTREFERENCE_X = null,
 		HTREFERENCE_Y = null,
         HTREFERENCE_Z = null,*/
-        LIVEHTREF = null
+        LIVEHTREF = null;
 
-	socket.on('connect', function() {
-		console.log('* Connected', socket.connected);
-        var statusGroup = $('#statusSocket')
-        statusGroup[0].classList.remove('ht-custom-status--socket-disconnected')
-        statusGroup[0].classList.add('ht-custom-status--socket')
-	});
+      socket.on("connect", function () {
+        console.log("* Connected", socket.connected);
+        var statusGroup = $("#statusSocket");
+        statusGroup[0].classList.remove(
+          "ht-custom-status--socket-disconnected"
+        );
+        statusGroup[0].classList.add("ht-custom-status--socket");
+      });
 
-	socket.on('disconnect', function() {
-		console.log('* Connected', socket.connected);
-        var statusGroup = $('#statusSocket')
-        statusGroup[0].classList.remove('ht-custom-status--socket')
-        statusGroup[0].classList.add('ht-custom-status--socket-disconnected')
-	});
+      socket.on("disconnect", function () {
+        console.log("* Connected", socket.connected);
+        var statusGroup = $("#statusSocket");
+        statusGroup[0].classList.remove("ht-custom-status--socket");
+        statusGroup[0].classList.add("ht-custom-status--socket-disconnected");
+      });
 
-    // Info about USB port
-	socket.on('feedback serial-info', (data) => {
-        console.log("USB info:", data)
-        $('#status-selected-port').text(data.port)
-        $('#status-selected-baud').text(data.baud)
-        SERIALPORT = data.port
-        SERIALBAUD = data.baud
-    })
+      // Info about USB port
+      socket.on("feedback serial-info", (data) => {
+        console.log("USB info:", data);
+        $("#status-selected-port").text(data.port);
+        $("#status-selected-baud").text(data.baud);
+        SERIALPORT = data.port;
+        SERIALBAUD = data.baud;
+      });
 
-    // Info about BLE
-	socket.on('feedback ble-info', (data) => {
-        console.log("BLE info:", data)
+      // Info about BLE
+      socket.on("feedback ble-info", (data) => {
+        console.log("BLE info:", data);
         // TODO: if BLE has startScan then clear list of ble lists
-        if(data.state == "poweredOn") {
-            document.getElementById('btnToggleBLE').classList.add('ht-custom-btn--ble--on');
-        } else if(data.state == "poweredOff") {
-            document.getElementById('btnToggleBLE').classList.remove('ht-custom-btn--ble--on');
+        if (data.state == "poweredOn") {
+          document
+            .getElementById("btnToggleBLE")
+            .classList.add("ht-custom-btn--ble--on");
+        } else if (data.state == "poweredOff") {
+          document
+            .getElementById("btnToggleBLE")
+            .classList.remove("ht-custom-btn--ble--on");
         }
-    })
+      });
 
-    // Info about Headtrack
-	socket.on('feedback headtrack-info', (data) => {
-        console.log("Headtrack info:", data)
+      // Info about Headtrack
+      socket.on("feedback headtrack-info", (data) => {
+        console.log("Headtrack info:", data);
         var tmp;
-        HTREFERENCE = data.htreference
-        if(data.htreference['wref']==null || data.htreference['xref']==null || data.htreference['yref']==null || data.htreference['zref']==null)
-        {
-            tmp = "No saved reference yet";
+        HTREFERENCE = data.htreference;
+        if (
+          data.htreference["wref"] == null ||
+          data.htreference["xref"] == null ||
+          data.htreference["yref"] == null ||
+          data.htreference["zref"] == null
+        ) {
+          tmp = "No saved reference yet";
+        } else {
+          tmp =
+            data.htreference["wref"] +
+            " " +
+            data.htreference["xref"] +
+            " " +
+            data.htreference["yref"] +
+            " " +
+            data.htreference["zref"];
         }
-        else
-        {
-            tmp = data.htreference['wref'] + ' ' + data.htreference['xref'] + ' ' + data.htreference['yref'] + ' ' + data.htreference['zref'];
-        }
-        $('#status-ht-reference').text(tmp)
-    })
+        $("#status-ht-reference").text(tmp);
+      });
 
-	// Save Headtrack COM port
-	$('#save-ht-port').submit(() => {
-		var formdata = {}
-        formdata.input_headtrack_port = $('#inputHeadtrackPorts').val()
-        formdata.input_headtrack_baud = $('#inputHeadtrackBaud').val()
-        console.dir("Saving HT port: ")
-        console.dir(formdata)
-		socket.emit('usb-save-settings', formdata)
-		return false // preventdefault
-	})
+      // Save Headtrack COM port
+      $("#save-ht-port").submit(() => {
+        var formdata = {};
+        formdata.input_headtrack_port = $("#inputHeadtrackPorts").val();
+        formdata.input_headtrack_baud = $("#inputHeadtrackBaud").val();
+        console.dir("Saving HT port: ");
+        console.dir(formdata);
+        socket.emit("usb-save-settings", formdata);
+        return false; // preventdefault
+      });
 
-	// List available ports
-	socket.on('scanned-ports', (ports) => {
-		// Clear ports from list
-		$('#inputHeadtrackPorts').find('option').remove()
+      // List available ports
+      socket.on("scanned-ports", (ports) => {
+        // Clear ports from list
+        $("#inputHeadtrackPorts").find("option").remove();
 
-		ports.forEach(function(port) {
-			let tmp = port.comName + ', ' + port.manufacturer + ', location: ' + port.locationId
-			if(port.productId) {
-				tmp += ', product: ' + port.productId
-			}
-			if(port.vendorId) {
-				tmp += ', vendor: ' + port.vendorId
-			}
-			if(port.comName==SERIALPORT) {
-				$('#inputHeadtrackPorts').append($('<option/>', {
-					value: port.comName,
-					selected: 'selected',
-					text : tmp
-				}))
-			} else {
-				$('#inputHeadtrackPorts').append($('<option/>', {
-					value: port.comName,
-					text : tmp
-				}))
-			}
-		})
-    })
+        ports.forEach(function (port) {
+          let tmp =
+            port.comName +
+            ", " +
+            port.manufacturer +
+            ", location: " +
+            port.locationId;
+          if (port.productId) {
+            tmp += ", product: " + port.productId;
+          }
+          if (port.vendorId) {
+            tmp += ", vendor: " + port.vendorId;
+          }
+          if (port.comName == SERIALPORT) {
+            $("#inputHeadtrackPorts").append(
+              $("<option/>", {
+                value: port.comName,
+                selected: "selected",
+                text: tmp,
+              })
+            );
+          } else {
+            $("#inputHeadtrackPorts").append(
+              $("<option/>", {
+                value: port.comName,
+                text: tmp,
+              })
+            );
+          }
+        });
+      });
 
-    // List available BLE
-	socket.on('scanned-ports ble', (ports) => {
-		// Clear ports from list
+      // List available BLE
+      socket.on("scanned-ports ble", (ports) => {
+        // Clear ports from list
         //$('#inputBLEPorts').find('option').remove()
-        if(ports.localName != '' && typeof ports.localName != 'undefined') {
-            let lbl = ''
-            if(ports.manufacturerData != "") {
-                lbl = ports.localName + ' ' + ports.manufacturerData
-            } else {
-                lbl = ports.localName
-            }
-            $('#inputBLEPorts').append($('<option/>', {
-                value: ports.localName,
-                text : lbl
-            }))
+        if (ports.localName != "" && typeof ports.localName != "undefined") {
+          let lbl = "";
+          if (ports.manufacturerData != "") {
+            lbl = ports.localName + " " + ports.manufacturerData;
+          } else {
+            lbl = ports.localName;
+          }
+          $("#inputBLEPorts").append(
+            $("<option/>", {
+              value: ports.localName,
+              text: lbl,
+            })
+          );
         }
-    })
+      });
 
-    // Button actions
-    function addEvent(element, evnt, funct) {
-        if (element.attachEvent)
-            return element.attachEvent('on'+evnt, funct);
-        else
-            return element.addEventListener(evnt, funct, false);
-    }
+      // Button actions
+      function addEvent(element, evnt, funct) {
+        if (element.attachEvent) return element.attachEvent("on" + evnt, funct);
+        else return element.addEventListener(evnt, funct, false);
+      }
 
-    // Start HT serial track
-    addEvent(
-        document.getElementById('inputStartHtWatchSerial'),
-        'click',
+      // Start HT serial track
+      addEvent(
+        document.getElementById("inputStartHtWatchSerial"),
+        "click",
         function () {
-            console.log("START HT Serial")
-            socket.emit('usb-start-track', true)
-            return false
-        });
+          console.log("START HT Serial");
+          socket.emit("usb-start-track", true);
+          return false;
+        }
+      );
 
-    // Stop HT serial track
-    addEvent(
-        document.getElementById('inputStopHtWatchSerial'),
-        'click',
+      // Stop HT serial track
+      addEvent(
+        document.getElementById("inputStopHtWatchSerial"),
+        "click",
         function () {
-            console.log("STOP HT Serial")
-            socket.emit('usb-stop-track', true)
-            return false
-        });
+          console.log("STOP HT Serial");
+          socket.emit("usb-stop-track", true);
+          return false;
+        }
+      );
 
-    // Start scan for BLE Devices
-    addEvent(
-        document.getElementById('inputStartScanBLE'),
-        'click',
+      // Start scan for BLE Devices
+      addEvent(
+        document.getElementById("inputStartScanBLE"),
+        "click",
         function () {
-            console.log("Start BLE discover")
-            socket.emit('ble-start-scan', true)
-            return false
-        });
+          console.log("Start BLE discover");
+          socket.emit("ble-start-scan", true);
+          return false;
+        }
+      );
 
-    // BLE - Start HT Watch
-    addEvent(
-        document.getElementById('inputStartHtWatchBLE'),
-        'click',
+      // BLE - Start HT Watch
+      addEvent(
+        document.getElementById("inputStartHtWatchBLE"),
+        "click",
         function () {
-            console.log("Start HT Watch BLE")
-            socket.emit('ble-start-notify-sensor', true)
-            return false
-        });
+          console.log("Start HT Watch BLE");
+          socket.emit("ble-start-notify-sensor", true);
+          return false;
+        }
+      );
 
-    // BLE - Stop HT Watch
-    addEvent(
-        document.getElementById('inputStopHtWatchBLE'),
-        'click',
+      // BLE - Stop HT Watch
+      addEvent(
+        document.getElementById("inputStopHtWatchBLE"),
+        "click",
         function () {
-            console.log("Stop HT Watch BLE")
-            socket.emit('ble-stop-notify-sensor', true)
-            return false
-        });
+          console.log("Stop HT Watch BLE");
+          socket.emit("ble-stop-notify-sensor", true);
+          return false;
+        }
+      );
 
-    // Stop scan for BLE Devices
-    addEvent(
-        document.getElementById('inputStopScanBLE'),
-        'click',
+      // Stop scan for BLE Devices
+      addEvent(
+        document.getElementById("inputStopScanBLE"),
+        "click",
         function () {
-            console.log("Stop BLE discover")
-            socket.emit('ble-stop-scan', true)
-            return false
-        });
+          console.log("Stop BLE discover");
+          socket.emit("ble-stop-scan", true);
+          return false;
+        }
+      );
 
-    // Start scan for USB Port I/O:s
-    addEvent(
-        document.getElementById('inputGetAvailableUSB'),
-        'click',
+      // Start scan for USB Port I/O:s
+      addEvent(
+        document.getElementById("inputGetAvailableUSB"),
+        "click",
         function () {
-            console.log("Start USB-port scan")
-            socket.emit('usb-start-scan', true)
-        });
+          console.log("Start USB-port scan");
+          socket.emit("usb-start-scan", true);
+        }
+      );
 
-    // BLE - Connect to BLE Device
-    addEvent(
-        document.getElementById('inputConnectToBLE'),
-        'click',
+      // BLE - Connect to BLE Device
+      addEvent(
+        document.getElementById("inputConnectToBLE"),
+        "click",
         function () {
-            var element = document.getElementById('inputBLEPorts');
-            var selectedDevice = element.options[element.selectedIndex].value;
-            console.log("Connect to device: " + selectedDevice);
-            socket.emit('ble-connect-to', selectedDevice)
-            return false
-        });
+          var element = document.getElementById("inputBLEPorts");
+          var selectedDevice = element.options[element.selectedIndex].value;
+          console.log("Connect to device: " + selectedDevice);
+          socket.emit("ble-connect-to", selectedDevice);
+          return false;
+        }
+      );
 
-    // BLE - Send commands
-    addEvent(
-        document.getElementById('inputStartCalibration'),
-        'click',
+      // BLE - Send commands
+      addEvent(
+        document.getElementById("inputStartCalibration"),
+        "click",
         function () {
-            var element = document.getElementById('inputWriteToBLE').value;
-            console.log("Send calibration message: " + element);
-            socket.emit('ble-calibrate-sensor', element)
-            return false
-        });
+          var element = document.getElementById("inputWriteToBLE").value;
+          console.log("Send calibration message: " + element);
+          socket.emit("ble-calibrate-sensor", element);
+          return false;
+        }
+      );
 
-    // Show hide general ht menu
-    addEvent(
-        document.getElementById('statusSocket'),
-        'click',
+      // Show hide general ht menu
+      addEvent(document.getElementById("statusSocket"), "click", function () {
+        document
+          .getElementById("htcontrols")
+          .classList.toggle("pop-box--toggle");
+        document
+          .getElementById("htcontrols--ble")
+          .classList.add("pop-box--toggle");
+        document
+          .getElementById("htcontrols--usb")
+          .classList.add("pop-box--toggle");
+      });
+
+      addEvent(document.getElementById("btnToggleBLE"), "click", function () {
+        document.getElementById("htcontrols").classList.add("pop-box--toggle");
+        document
+          .getElementById("htcontrols--ble")
+          .classList.toggle("pop-box--toggle");
+        document
+          .getElementById("htcontrols--usb")
+          .classList.add("pop-box--toggle");
+
+        setTimeout(function () {}, 500);
+      });
+
+      addEvent(document.getElementById("btnToggleUSB"), "click", function () {
+        document.getElementById("htcontrols").classList.add("pop-box--toggle");
+        document
+          .getElementById("htcontrols--usb")
+          .classList.toggle("pop-box--toggle");
+        document
+          .getElementById("htcontrols--ble")
+          .classList.add("pop-box--toggle");
+      });
+
+      addEvent(document.getElementById("btnToggleUSB"), "click", function () {
+        this.classList.toggle("ht-custom-btn--usb--on");
+      });
+
+      addEvent(
+        document.getElementById("btnToggleSetReference"),
+        "click",
         function () {
-            document.getElementById('htcontrols').classList.toggle('pop-box--toggle');
-            document.getElementById('htcontrols--ble').classList.add('pop-box--toggle');
-            document.getElementById('htcontrols--usb').classList.add('pop-box--toggle');
-        });
+          ht_setLocalReferencePoint();
+        }
+      );
 
-    addEvent(
-        document.getElementById('btnToggleBLE'),
-        'click',
+      addEvent(
+        document.getElementById("inputSaveHeadtrackReference"),
+        "click",
         function () {
-            document.getElementById('htcontrols').classList.add('pop-box--toggle');
-            document.getElementById('htcontrols--ble').classList.toggle('pop-box--toggle');
-            document.getElementById('htcontrols--usb').classList.add('pop-box--toggle');
+          ht_setLocalReferencePoint();
+        }
+      );
 
-            setTimeout(function() {
-
-            }, 500)
-        });
-
-    addEvent(
-        document.getElementById('btnToggleUSB'),
-        'click',
+      addEvent(
+        document.getElementById("btnToggleResetReference"),
+        "click",
         function () {
-            document.getElementById('htcontrols').classList.add('pop-box--toggle');
-            document.getElementById('htcontrols--usb').classList.toggle('pop-box--toggle');
-            document.getElementById('htcontrols--ble').classList.add('pop-box--toggle');
-        });
+          ht_ResetReference();
+        }
+      );
 
-    addEvent(
-        document.getElementById('btnToggleUSB'),
-        'click',
+      addEvent(
+        document.getElementById("inputResetHeadtrackReference"),
+        "click",
         function () {
-            this.classList.toggle('ht-custom-btn--usb--on');
-        });
+          ht_ResetReference();
+        }
+      );
 
-    addEvent(
-        document.getElementById('btnToggleSetReference'),
-        'click',
-        function () {
-            ht_setLocalReferencePoint()
-        });
-
-    addEvent(
-        document.getElementById('inputSaveHeadtrackReference'),
-        'click',
-        function () {
-            ht_setLocalReferencePoint()
-        });
-
-    addEvent(
-        document.getElementById('btnToggleResetReference'),
-        'click',
-        function() {
-            ht_ResetReference()
-        });
-
-    addEvent(
-        document.getElementById('inputResetHeadtrackReference'),
-        'click',
-        function() {
-            ht_ResetReference()
-        });
-
-	// Recieve Headtracking data
-	socket.on('htq', function(msg) {
+      // Recieve Headtracking data
+      socket.on("htq", function (msg) {
         // Add new reference plane
         //let qRefComp = quatMultiply(msg[1], msg[2], msg[3], msg[4])
-        let qRefComp = quatMultiply(msg[0], msg[1], msg[2], msg[3])
+        let qRefComp = quatMultiply(msg[0], msg[1], msg[2], msg[3]);
         //console.dir(qRefComp)
         // Quaternion to Matrix
-        let qMtx = quatToMatrix(qRefComp[0],qRefComp[1],qRefComp[2],qRefComp[3])
+        let qMtx = quatToMatrix(
+          qRefComp[0],
+          qRefComp[1],
+          qRefComp[2],
+          qRefComp[3]
+        );
 
         // Omnitone rotate soundfield with Matrix
-        ht_rotatesoundfield(qMtx)
+        ht_rotatesoundfield(qMtx);
 
         // Three.js Rotate 3D model
-		requestAnimationFrame(function() {
-            ht_rotategfx(qRefComp)
-        })
+        requestAnimationFrame(function () {
+          ht_rotategfx(qRefComp);
+        });
 
         // Set value in DOM for reference
         //$('#inputHeadtrackRef').val(msg)
-        LIVEHTREF = msg
-	})
+        LIVEHTREF = msg;
+      });
 
-    function ht_setLocalReferencePoint() {
+      function ht_setLocalReferencePoint() {
+        if (LIVEHTREF !== null) {
+          LIVEHTREFSAVE = LIVEHTREF;
+          console.log("Saving and splitting ref");
+          if (typeof LIVEHTREFSAVE == "string") {
+            LIVEHTREFSAVE = LIVEHTREFSAVE.split(",");
+          }
+          console.dir(LIVEHTREFSAVE);
 
-        if(LIVEHTREF!==null) {
+          // TODO: Ref split what position?????
+          HTREFRAW_W = parseFloat(LIVEHTREFSAVE[0]) || 0;
+          HTREFRAW_X = parseFloat(LIVEHTREFSAVE[1]) || 0;
+          HTREFRAW_Y = parseFloat(LIVEHTREFSAVE[2]) || 0;
+          HTREFRAW_Z = parseFloat(LIVEHTREFSAVE[3]) || 0;
 
-            LIVEHTREFSAVE = LIVEHTREF
-            console.log("Saving and splitting ref")
-            if(typeof LIVEHTREFSAVE == 'string') {
-                LIVEHTREFSAVE = LIVEHTREFSAVE.split(',')
-            }
-            console.dir(LIVEHTREFSAVE)
+          HTREFERENCE = quatConjugate(
+            HTREFRAW_W,
+            HTREFRAW_X,
+            HTREFRAW_Y,
+            HTREFRAW_Z
+          ); // { wref: q_w, xref: -q_x, yref: -q_y, zref: -q_z }
+          console.dir(HTREFERENCE);
+          HTREFERENCE["status"] = true;
 
-            // TODO: Ref split what position?????
-            HTREFRAW_W = parseFloat(LIVEHTREFSAVE[0]) || 0
-            HTREFRAW_X = parseFloat(LIVEHTREFSAVE[1]) || 0
-            HTREFRAW_Y = parseFloat(LIVEHTREFSAVE[2]) || 0
-            HTREFRAW_Z = parseFloat(LIVEHTREFSAVE[3]) || 0
+          //console.log(HTREFERENCE_W, HTREFERENCE_X, HTREFERENCE_Y, HTREFERENCE_Z)
+          socket.emit("save-user config-options", HTREFERENCE);
+          //socket.emit('save-user config-options', { wref: HTREFERENCE_W, xref: HTREFERENCE_X, yref: HTREFERENCE_Y, zref: HTREFERENCE_Z })
+          //TODO: make this a general function that sets it
+          var event = new CustomEvent("htsetreference", {
+            detail: { htReference: true },
+          });
+          window.dispatchEvent(event);
 
-            HTREFERENCE = quatConjugate(HTREFRAW_W, HTREFRAW_X, HTREFRAW_Y, HTREFRAW_Z) // { wref: q_w, xref: -q_x, yref: -q_y, zref: -q_z }
-            console.dir(HTREFERENCE)
-            HTREFERENCE['status'] = true
-
-            //console.log(HTREFERENCE_W, HTREFERENCE_X, HTREFERENCE_Y, HTREFERENCE_Z)
-            socket.emit('save-user config-options', HTREFERENCE)
-            //socket.emit('save-user config-options', { wref: HTREFERENCE_W, xref: HTREFERENCE_X, yref: HTREFERENCE_Y, zref: HTREFERENCE_Z })
-            //TODO: make this a general function that sets it
-            var event = new CustomEvent("htsetreference", { detail: { htReference: true } });
-            window.dispatchEvent(event);
-
-            console.log("Saving HT ref: ")
-            console.dir(HTREFERENCE)
-            $('#status-ht-reference').text(HTREFERENCE['wref'] + ' ' + HTREFERENCE['xref'] + ' ' + HTREFERENCE['yref'] + ' ' + HTREFERENCE['zref'] )
-            //return false // preventdefault
+          console.log("Saving HT ref: ");
+          console.dir(HTREFERENCE);
+          $("#status-ht-reference").text(
+            HTREFERENCE["wref"] +
+              " " +
+              HTREFERENCE["xref"] +
+              " " +
+              HTREFERENCE["yref"] +
+              " " +
+              HTREFERENCE["zref"]
+          );
+          //return false // preventdefault
         } else {
-            console.log("Could not set reference no input available.")
+          console.log("Could not set reference no input available.");
         }
-    }
+      }
 
-    function ht_ResetReference() {
-        console.log("Reset HT-Ref")
-        HTREFERENCE = { wref: null, xref: null, yref: null, zref: null, status: false }
-        var event = new CustomEvent("htsetreference", { detail: { htReference: false } });
+      function ht_ResetReference() {
+        console.log("Reset HT-Ref");
+        HTREFERENCE = {
+          wref: null,
+          xref: null,
+          yref: null,
+          zref: null,
+          status: false,
+        };
+        var event = new CustomEvent("htsetreference", {
+          detail: { htReference: false },
+        });
         window.dispatchEvent(event);
-		return false
-    }
+        return false;
+      }
 
-    // add an appropriate event listener
-    window.addEventListener("htsetreference", function(e) {
-        let item = document.getElementById('btnToggleSetReference')
-        let itemreset = document.getElementById('btnToggleResetReference')
+      // add an appropriate event listener
+      window.addEventListener("htsetreference", function (e) {
+        let item = document.getElementById("btnToggleSetReference");
+        let itemreset = document.getElementById("btnToggleResetReference");
 
-        if(e.detail.htReference) {
-            item.classList.add('ht-custom-btn--reference--on');
-            itemreset.classList.remove('ht-custom-btn--reset--on');
+        if (e.detail.htReference) {
+          item.classList.add("ht-custom-btn--reference--on");
+          itemreset.classList.remove("ht-custom-btn--reset--on");
         } else {
-            item.classList.remove('ht-custom-btn--reference--on');
-            itemreset.classList.add('ht-custom-btn--reset--on');
+          item.classList.remove("ht-custom-btn--reference--on");
+          itemreset.classList.add("ht-custom-btn--reset--on");
         }
 
-        if(e.detail.audioPlaying) {
-            document.getElementById('eButtonPlayback').textContent = 'Pause';
-            btnToggleAudioPlayer.classList.add('ht-custom-btn--audio--playing');
+        if (e.detail.audioPlaying) {
+          document.getElementById("eButtonPlayback").textContent = "Pause";
+          btnToggleAudioPlayer.classList.add("ht-custom-btn--audio--playing");
         } else {
-            document.getElementById('eButtonPlayback').textContent = 'Play';
-            btnToggleAudioPlayer.classList.remove('ht-custom-btn--audio--playing');
+          document.getElementById("eButtonPlayback").textContent = "Play";
+          btnToggleAudioPlayer.classList.remove(
+            "ht-custom-btn--audio--playing"
+          );
         }
-    });
+      });
 
-	socket.on('message', function (message) {
-		// TODO: General message, remove
-		console.log(message)
-	})
+      socket.on("message", function (message) {
+        // TODO: General message, remove
+        console.log(message);
+      });
 
-	function quatToMatrix(q_w, q_x, q_y, q_z){
-		const sqw = q_w*q_w;
-		const sqx = q_x*q_x;
-		const sqy = q_y*q_y;
-		const sqz = q_z*q_z;
+      function quatToMatrix(q_w, q_x, q_y, q_z) {
+        const sqw = q_w * q_w;
+        const sqx = q_x * q_x;
+        const sqy = q_y * q_y;
+        const sqz = q_z * q_z;
 
-		m00 = ( sqx - sqy - sqz + sqw);
-		m11 = (-sqx + sqy - sqz + sqw);
-		m22 = (-sqx - sqy + sqz + sqw);
+        m00 = sqx - sqy - sqz + sqw;
+        m11 = -sqx + sqy - sqz + sqw;
+        m22 = -sqx - sqy + sqz + sqw;
 
-		m10 = 2.0 * ((q_x*q_y) + (q_z*q_w));
-		m01 = 2.0 * ((q_x*q_y) - (q_z*q_w));
+        m10 = 2.0 * (q_x * q_y + q_z * q_w);
+        m01 = 2.0 * (q_x * q_y - q_z * q_w);
 
-		m20 = 2.0 * ((q_x*q_z) - (q_y*q_w));
-		m02 = 2.0 * ((q_x*q_z) + (q_y*q_w));
+        m20 = 2.0 * (q_x * q_z - q_y * q_w);
+        m02 = 2.0 * (q_x * q_z + q_y * q_w);
 
-		m21 = 2.0 * ((q_y*q_z) + (q_x*q_w));
-		m12 = 2.0 * ((q_y*q_z) - (q_x*q_w));
+        m21 = 2.0 * (q_y * q_z + q_x * q_w);
+        m12 = 2.0 * (q_y * q_z - q_x * q_w);
 
-		//m00	m01		m02
-		//m10	m11		m12
-		//m20	m21		m22
+        //m00	m01		m02
+        //m10	m11		m12
+        //m20	m21		m22
 
-		return [m00, m01, m02, m10, m11, m12, m20, m21, m22];
-    }
+        return [m00, m01, m02, m10, m11, m12, m20, m21, m22];
+      }
 
-	function quatConjugate(q_w, q_x, q_y, q_z){
-        q_x *= - 1
-        q_y *= - 1
-        q_z *= - 1
-        return { wref: q_w, xref: q_x, yref: q_y, zref: q_z }
-    }
+      function quatConjugate(q_w, q_x, q_y, q_z) {
+        q_x *= -1;
+        q_y *= -1;
+        q_z *= -1;
+        return { wref: q_w, xref: q_x, yref: q_y, zref: q_z };
+      }
 
-	function quatMultiply(q_w, q_x, q_y, q_z) {
+      function quatMultiply(q_w, q_x, q_y, q_z) {
         // Product Hamilton product
         // https://en.wikipedia.org/wiki/Quaternion#Hamilton_product
 
-        if(HTREFERENCE == null || HTREFERENCE['status'] == false) {
-            return [q_w, q_x, q_y, q_z];
+        if (HTREFERENCE == null || HTREFERENCE["status"] == false) {
+          return [q_w, q_x, q_y, q_z];
         }
 
-        var newW = ( q_w*HTREFERENCE['wref'] - q_x*HTREFERENCE['xref'] - q_y*HTREFERENCE['yref'] - q_z*HTREFERENCE['zref'] ); //real        
-        var newX = ( q_w*HTREFERENCE['xref'] + q_x*HTREFERENCE['wref'] + q_z*HTREFERENCE['yref'] - q_y*HTREFERENCE['zref'] ); //i
-        var newY = ( q_w*HTREFERENCE['yref'] + q_y*HTREFERENCE['wref'] + q_x*HTREFERENCE['zref'] - q_z*HTREFERENCE['xref'] ); //j
-        var newZ = ( q_w*HTREFERENCE['zref'] + q_z*HTREFERENCE['wref'] + q_y*HTREFERENCE['xref'] - q_x*HTREFERENCE['yref'] ); //k
+        var newW =
+          q_w * HTREFERENCE["wref"] -
+          q_x * HTREFERENCE["xref"] -
+          q_y * HTREFERENCE["yref"] -
+          q_z * HTREFERENCE["zref"]; //real
+        var newX =
+          q_w * HTREFERENCE["xref"] +
+          q_x * HTREFERENCE["wref"] +
+          q_z * HTREFERENCE["yref"] -
+          q_y * HTREFERENCE["zref"]; //i
+        var newY =
+          q_w * HTREFERENCE["yref"] +
+          q_y * HTREFERENCE["wref"] +
+          q_x * HTREFERENCE["zref"] -
+          q_z * HTREFERENCE["xref"]; //j
+        var newZ =
+          q_w * HTREFERENCE["zref"] +
+          q_z * HTREFERENCE["wref"] +
+          q_y * HTREFERENCE["xref"] -
+          q_x * HTREFERENCE["yref"]; //k
 
         return [newW, newX, newY, newZ];
         /*
@@ -1070,17 +1253,18 @@
         var newK = ( q_w*HTREFERENCE['zref'] + q_x*HTREFERENCE['yref'] - q_y*HTREFERENCE['xref'] + q_z*HTREFERENCE['wref'] ); //k
 
 		return [newW, newI, newJ, newK]; */
-    }
+      }
 
-	window.console.log.apply(window.console, [
-		'%c[HT]%c '
-		+ 'Starting, all loaded' + ' %c(@'
-		+ performance.now().toFixed(2) + 'ms)',
-		'background: #000000; color: #00FF22; font-weight: 700',
-		'font-weight: 400',
-		'color: #AAA'
-	]);
-
-</script>
-</body>
+      window.console.log.apply(window.console, [
+        "%c[HT]%c " +
+          "Starting, all loaded" +
+          " %c(@" +
+          performance.now().toFixed(2) +
+          "ms)",
+        "background: #000000; color: #00FF22; font-weight: 700",
+        "font-weight: 400",
+        "color: #AAA",
+      ]);
+    </script>
+  </body>
 </html>
