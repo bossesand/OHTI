@@ -1,8 +1,8 @@
-# OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings.
+# OHTI Headtracking device HW and Firmware + Player for streams or files of Ambisonic format recordings
 
 ## February 19 2021
 
-The below is not upto date, there is a new design of the headtracker that use a esp8266 D1 Mini and a GY-BNO055 with straight pin connections between 8266 and BNO055 module. The current headtracker in https://github.com/bossesand/OHTI-HT-osc-wifi uses a translating program between WiFi OSC SpaceRotator/quaternions qw,qx,qy,qz to a websocket interface (Win10 currently) for the OHTI Rev 2 headtracker supporting player rednders to binaural by Omnitone, The interface program can be downloaded from https://www.ohti.xyz -wW,-qY,qX. The OSC-Bridge-V3C.zip is a plugin written by to interface several different headtrackers and send OSC messages tailored to different rotator VST's. It has been tested to support a serial headtracker sending forward to the https://www.ohti.xyz/OHTI-OSC-Receiver-msgpack-1.2.exe.zip plugin and it works in Chrome and Edge.
+The below is not upto date, there is a new design of the headtracker that use a esp8266 D1 Mini and a GY-BNO055 with straight pin connections between 8266 and BNO055 module. The current headtracker in <https://github.com/bossesand/OHTI-HT-osc-wifi> uses a translating program between WiFi OSC SpaceRotator/quaternions qw,qx,qy,qz to a websocket interface (Win10 currently) for the OHTI Rev 2 headtracker supporting player rednders to binaural by Omnitone, The interface program can be downloaded from <https://www.ohti.xyz> -wW,-qY,qX. The OSC-Bridge-V3C.zip is a plugin written by to interface several different headtrackers and send OSC messages tailored to different rotator VST's. It has been tested to support a serial headtracker sending forward to the <https://www.ohti.xyz/OHTI-OSC-Receiver-msgpack-1.2.exe.zip> plugin and it works in Chrome and Edge.
 
 I will update build descriptions as soon As I can find time.
 
@@ -24,9 +24,9 @@ BLE on windows10 does not so far work well.
 
 ## Update 20 Jan 2019
 
-I now have online demos of Omnitone and JSAmbionics binaural rendering of Second and Third order material on http://www.ohti.xyz. The Examples are lightly modified code from Omnitone and JSAmbisonic projcect here on github. Mostly to add possibility to select other demo sound clips.
+I now have online demos of Omnitone and JSAmbionics binaural rendering of Second and Third order material on <http://www.ohti.xyz>. The Examples are lightly modified code from Omnitone and JSAmbisonic projcect here on github. Mostly to add possibility to select other demo sound clips.
 
-Now this project is using the September 2018 version of Omnitone.The GUI is improved to allow easier access to Local Ambisonic files. Also handling of files from the local webserver is changed, It can now handle more than 8 channels in a single file on Chrome and Firefox. Assitance from Omnitone team was received and this non headtracked experimental HOA player was written for trouble shooting: https://rawgit.com/GoogleChrome/omnitone/exp-opus-multichannel/examples/hoa-player.html
+Now this project is using the September 2018 version of Omnitone.The GUI is improved to allow easier access to Local Ambisonic files. Also handling of files from the local webserver is changed, It can now handle more than 8 channels in a single file on Chrome and Firefox. Assitance from Omnitone team was received and this non headtracked experimental HOA player was written for trouble shooting: <https://rawgit.com/GoogleChrome/omnitone/exp-opus-multichannel/examples/hoa-player.html>
 
 Host software to use a local webserver to allow Binaural Headphone listening with headtracking to Ambisonic files up to Third order using either Omnitone or JSAmbisonics binaural decoders in JavaScript capable browser like Chrome or Firefox.
 
@@ -34,7 +34,7 @@ The current headtracker hardware is based on nrF53832 and a BNO055 as IMU sensor
 
 ## History and Design choices
 
-The first version was based on https://www.rcgroups.com/forums/showthread.php?1677559-DIY-Headtracker-(Easy-build-No-drift-OpenSource) on a Arduino nano and a imu sensor board.
+The first version was based on <https://www.rcgroups.com/forums/showthread.php?1677559-DIY-Headtracker-(Easy-build-No-drift-OpenSource)> on a Arduino nano and a imu sensor board.
 
 Matthias Kronlashner was kind enough to create a working sw plugin for his Ambix plugins suite that could use this headtracker.
 
@@ -54,18 +54,17 @@ Quaternions is used as directional information carrier, the nordic emulated seri
 
 **We have verified that this way of communicating between OHTI Headtracker and Web player can send and update the directional information in a loop that is run with a delay of 10 milliseconds between the action to read the 4 \* 16 bit quaternion registers and encode with z85 and send one BLE packet. I estimate the possible update rate to be verified at over 90 Hz with this solution!**
 
-
 This was found in Jan 2020 but not tested.
 
 If you want to try a DIY solution without soldering for the headtracker hardware, it comes at a higher cost than the earlier described solution .
 
-- https://www.smart-prototyping.com/Zio-nRF52832-Dev-Board-Qwiic-NRF-BLE $19.90. Dimension: 30.0 x 55.3mm
+- <https://www.smart-prototyping.com/Zio-nRF52832-Dev-Board-Qwiic-NRF-BLE> $19.90. Dimension: 30.0 x 55.3mm
 
-- https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO055.html $19.90. Dimension: 14.2x36.7mm(with mounting tab), 14.2x24.9mm(without mounting tab).
+- <https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO055.html> $19.90. Dimension: 14.2x36.7mm(with mounting tab), 14.2x24.9mm(without mounting tab).
 
-- https://www.smart-prototyping.com/Zio/zio-Components-Accessories/zio-cables/Qwiic-50mm-Cable-10pcs $6.99. A Bosch IMU chip with other firmware for higher update rates, not tested as possible bno055 replacement with current firmware.
+- <https://www.smart-prototyping.com/Zio/zio-Components-Accessories/zio-cables/Qwiic-50mm-Cable-10pcs> $6.99. A Bosch IMU chip with other firmware for higher update rates, not tested as possible bno055 replacement with current firmware.
 
-- https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO080.html $25.90. Dimension: 13.9x 36.2mm(with mounting tab), 13.9x24.7mm(without mounting tab).
+- <https://www.smart-prototyping.com/Zio-9DOF-IMU-BNO080.html> $25.90. Dimension: 13.9x 36.2mm(with mounting tab), 13.9x24.7mm(without mounting tab).
 
 Power can be provided with a usb power bank for BLE use.
 

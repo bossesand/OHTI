@@ -20,7 +20,7 @@ Start the app with the command:
 
 if you get Error: cannot find module "express" or other run the command npm install express or with other missing module name.
 
-Use chrome to connect to http://localhost:81 to start the ambisonic headtracked player
+Use chrome to connect to <http://localhost:81> to start the ambisonic headtracked player
 
 Select omnitone or JSambisonics players
 
@@ -29,10 +29,11 @@ On top there is 6 buttons from left to right the functions are
 1. Toggle the text panel for function choices and hiding of panel.
 
 2. To handle the connection to the OHTI BLE HW,
-Start discover/scan
-choose "OHTI undefined" from the rolldown menu
-connect to BLE Device
-Start HT-track BLE
+
+   - Start discover/scan
+   - choose "OHTI undefined" from the rolldown menu
+   - connect to BLE Device
+   - Start HT-track BLE
 
 3. Configure for usb port when connected with cable ( have been verified to wor but not included in this OHTI firmware release)
 

@@ -20,7 +20,7 @@ if you get Error: cannot find module "express" or other run the command npm inst
 
 `node main_ht_app.js port 82`
 
-Use chrome to connect to http://localhost:82 to start the ambisonic headtracked player
+Use chrome to connect to <http://localhost:82> to start the ambisonic headtracked player
 
 Select omnitone or JSambisonics players
 
@@ -29,6 +29,7 @@ On top there is 6 buttons from left to right the functions are
 1. Toggle the text panel for function choices and hiding of panel.
 
 2. To handle the connection to the OHTI BLE HW,
+
    - Start discover/scan
    - choose "OHTI undefined" from the rolldown menu
    - connect to BLE Device
