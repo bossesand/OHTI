@@ -20,6 +20,6 @@
     "noble-multidevice": "^1.8.1",
     "omnitone": "^0.1.8",
     "serialport": "^8",
-    "socket.io": "^2.4.0"
+    "socket.io": "^2.5.0"
   }
 }
